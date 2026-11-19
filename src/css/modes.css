@@ -1,0 +1,436 @@
+/* ========================================
+   DARK MODE (NATIVE), FORCED COLORS & PRINT
+   Zero Tailwind @variant directives; low-specificity :where() parity.
+   ======================================== */
+
+:root:where([data-theme='dark']) {
+  --color-bg-alt: #222329;
+  --color-fg: #ece9e3;
+  --color-fg-bold: #f4f0e9;
+  --color-fg-light: #bebac0;
+  --color-overlay-darker: rgba(0, 0, 0, 0.6);
+  --color-accent: #eebcb9;
+  --color-accent-hover: #f7d8d6;
+  --color-hero: #6f1d1a;
+  --color-on-hero: #f3eee5;
+  --color-on-hero-hover: #e2dccf;
+  --color-accent-fill: #eebcb9;
+  --color-accent-fill-hover: #f7d8d6;
+  --color-on-accent: #3b0e0d;
+  --color-accent-underline: color-mix(in srgb, var(--color-accent) 50%, transparent);
+  --color-signal: #f0a202;
+  --color-signal-mark: #f0a202;
+  --color-control-border: #8b929c;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-bg: rgba(255, 255, 255, 0.07);
+  --color-border-alt: rgba(255, 255, 255, 0.2);
+  --color-surface-subtle: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.07);
+  --color-fg-muted: rgba(255, 255, 255, 0.5);
+}
+
+:root:where([data-theme='dark']) :where(.portrait) img {
+  filter: brightness(0.9);
+}
+
+:root:where([data-theme='dark']) :where(.prose-figure) img {
+  background: #f6f3ed;
+}
+
+:root:where([data-theme='dark']) code {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme])) {
+    --color-bg-alt: #222329;
+    --color-fg: #ece9e3;
+    --color-fg-bold: #f4f0e9;
+    --color-fg-light: #bebac0;
+    --color-overlay-darker: rgba(0, 0, 0, 0.6);
+    --color-accent: #eebcb9;
+    --color-accent-hover: #f7d8d6;
+    --color-hero: #6f1d1a;
+    --color-on-hero: #f3eee5;
+    --color-on-hero-hover: #e2dccf;
+    --color-accent-fill: #eebcb9;
+    --color-accent-fill-hover: #f7d8d6;
+    --color-on-accent: #3b0e0d;
+    --color-accent-underline: color-mix(in srgb, var(--color-accent) 50%, transparent);
+    --color-signal: #f0a202;
+    --color-signal-mark: #f0a202;
+    --color-control-border: #8b929c;
+    --color-border: rgba(255, 255, 255, 0.12);
+    --color-border-bg: rgba(255, 255, 255, 0.07);
+    --color-border-alt: rgba(255, 255, 255, 0.2);
+    --color-surface-subtle: rgba(255, 255, 255, 0.04);
+    --color-surface-hover: rgba(255, 255, 255, 0.07);
+    --color-fg-muted: rgba(255, 255, 255, 0.5);
+  }
+
+  :root:where(:not([data-theme])) :where(.portrait) img {
+    filter: brightness(0.9);
+  }
+
+  :root:where(:not([data-theme])) :where(.prose-figure) img {
+    background: #f6f3ed;
+  }
+
+  :root:where(:not([data-theme])) code {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-bg);
+  }
+}
+
+/* Forced Colors (Windows High Contrast Mode) */
+@media (forced-colors: active) {
+  .nav-link::after {
+    background-color: LinkText;
+  }
+
+  .hamburger-ul li a.active span {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .button:not(.button-secondary) {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border-color: ButtonText;
+  }
+
+  .hamburger-icon span {
+    background-color: CanvasText;
+  }
+
+  .hamburger-button:focus-visible .hamburger-icon span {
+    background-color: CanvasText;
+  }
+
+  .jobs-container--current .job-marker {
+    background-color: CanvasText;
+    border-color: CanvasText;
+  }
+
+  .jobs-container::before,
+  .jobs-container:last-child::before,
+  .about-section--log .log-entry::before {
+    background: CanvasText;
+  }
+
+  .reading-progress-indicator {
+    background-color: CanvasText;
+  }
+
+  .portrait img {
+    filter: none;
+  }
+
+  .site-header {
+    background-color: Canvas;
+  }
+}
+
+/* Print Stylesheet */
+@media print {
+  :root,
+  [data-theme='dark'],
+  [data-theme='light'] {
+    color-scheme: light;
+    --color-bg-alt: #fff;
+    --color-fg: #000;
+    --color-fg-bold: #000;
+    --color-fg-light: #333;
+    --color-accent: #000;
+    --color-accent-hover: #000;
+    --color-hero: #fff;
+    --color-on-hero: #000;
+    --color-signal: #000;
+    --color-signal-mark: #000;
+    --color-border: rgba(0, 0, 0, 0.28);
+    --color-border-alt: rgba(0, 0, 0, 0.45);
+    --color-border-bg: rgba(0, 0, 0, 0.18);
+    --color-surface-subtle: transparent;
+    --color-surface-hover: transparent;
+  }
+
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  html {
+    background: #fff;
+  }
+
+  body {
+    font-size: 10.5pt;
+    line-height: 1.45;
+    padding-top: 0;
+  }
+
+  .skip-link,
+  .site-header,
+  .site-footer-new,
+  .slide-menu,
+  .reading-progress,
+  .post-pager,
+  .section-nav,
+  .writing-rss-link,
+  .resume-actions,
+  .resume-screen-title,
+  .about-section-heading-hash {
+    display: none !important;
+  }
+
+  .page-main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-container {
+    min-height: 0;
+  }
+
+  .resume-print-contact {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.75rem;
+    row-gap: 0;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    color: var(--color-fg-light);
+  }
+
+  .resume-print-contact a {
+    color: inherit;
+  }
+
+  .resume-print-contact > * {
+    white-space: nowrap;
+  }
+
+  .resume-print-name {
+    display: inline;
+  }
+
+  .page-title {
+    font-size: 22pt;
+  }
+
+  .resume-summary {
+    font-size: 10pt;
+    max-width: none;
+  }
+
+  .resume-content {
+    gap: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .jobs-container,
+  .degree-container,
+  .skill-group,
+  .about-section--log li,
+  .project-entry,
+  .course-container {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .jobs-container,
+  .skill-group {
+    --resume-gutter: 7.5rem;
+    --resume-gap: 1rem;
+  }
+
+  .jobs-container {
+    padding: 0 0 0.9rem;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .jobs-container::before,
+  .job-marker,
+  .about-section--log .log-entry::before,
+  .about-section--log .log-entry::after {
+    display: none;
+  }
+
+  .about-intro p {
+    font-size: 12pt;
+  }
+
+  .about-section--log ul {
+    padding-left: 1.1rem;
+    list-style: disc;
+  }
+
+  .about-section--log .log-entry {
+    display: list-item;
+    padding-left: 0;
+  }
+
+  .log-entry-marker {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0 0.4em;
+    text-align: left;
+    margin-right: 0.5em;
+  }
+
+  .log-entry-marker:empty {
+    display: none;
+  }
+
+  .log-entry-body {
+    display: inline;
+  }
+
+  .jobs-container--lead header h3 {
+    font-size: 13pt;
+  }
+
+  .jobs-container header h3 {
+    gap: 0.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .jobs-container--primary header h3,
+  .degree-container .degree {
+    font-size: 12pt;
+  }
+
+  .jobs-container--early header h3 {
+    font-size: 11pt;
+  }
+
+  .job-position,
+  .degree-container .school {
+    font-size: 9pt;
+  }
+
+  .daterange,
+  .degree-container .school time,
+  .courses .course-number {
+    font-size: 8pt;
+  }
+
+  .degree-container + .degree-container {
+    margin-top: 0.6rem;
+  }
+
+  .jobs-container .points {
+    margin-top: 0.3rem;
+  }
+
+  .jobs-container .points li {
+    --leading: 1.35;
+    font-size: 9.5pt;
+    margin-bottom: 0.15rem;
+  }
+
+  .jobs-container header,
+  .summary,
+  .jobs-container .points li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .jobs-container header,
+  .summary,
+  .jobs-container .points li:first-child {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .jobs-container .points li:last-child {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  .summary,
+  .jobs-container--lead .summary,
+  .jobs-container--early .summary {
+    margin-bottom: 0.25rem;
+    line-height: 1.35;
+    font-size: 10pt;
+  }
+
+  .stat-table-value {
+    font-size: 14pt;
+  }
+
+  .skill-tier-legend-tone {
+    display: none;
+  }
+
+  .skills .skill-tier-legend {
+    margin: 0 0 0.5rem;
+  }
+
+  .skill-groups {
+    gap: 0.3rem;
+  }
+
+  .skill-group-title {
+    font-size: 9pt;
+  }
+
+  .skill-tags {
+    gap: 0.25rem;
+  }
+
+  .skill-tag {
+    padding: 0.05em 0.5em;
+    font-size: 8pt;
+  }
+
+  .skill-tag,
+  .tech-tag {
+    border-color: rgba(0, 0, 0, 0.35);
+  }
+
+  .about-content a[href^='http']::after,
+  .prose a[href^='http']::after,
+  .job-company[href^='http']::after,
+  .degree-container .school a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    font-weight: var(--font-weight-normal);
+    letter-spacing: var(--tracking-normal);
+    color: var(--color-fg-light);
+    word-break: break-all;
+  }
+
+  .resume-page .courses .course-list {
+    column-gap: 1.5rem;
+  }
+
+  .course-container a {
+    min-height: 0;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    margin: 0;
+    padding: 0.05rem 0;
+  }
+
+  .courses .course-name {
+    font-size: 9.5pt;
+  }
+
+  a {
+    color: #000;
+  }
+
+  img {
+    filter: grayscale(1) !important;
+  }
+}

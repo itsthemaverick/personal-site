@@ -1,0 +1,94 @@
+/* ========================================
+   CONTACT PAGE
+   ======================================== */
+
+/* The address's font is set here, not on the link, so the container query
+   below measures in the address's own characters. */
+.contact-email-container {
+  container: contact-email / inline-size;
+  margin: 1.5rem 0 1rem;
+  font-family: var(--font-mono);
+  font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
+}
+
+/* The address is the page's one instruction, so it is set as a
+   readout in mono rather than dressed up as a tinted button. It holds one
+   line whatever the animation shows, so nothing below it ever moves. */
+.contact-email-link {
+  display: inline-grid;
+  grid-template-columns: minmax(0, max-content) max-content;
+  align-items: baseline;
+  max-width: 100%;
+  padding: 0.875rem 0;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--color-fg-bold);
+  border-bottom: var(--rule-strong) solid var(--color-accent);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.contact-email-link:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent-hover);
+}
+
+/* The alias types into its own slot. One too long for the line keeps its
+   newest characters in view, the way a terminal does: right-to-left overflow
+   clips the start behind an ellipsis, while the `dir="ltr"` text inside still
+   reads left to right. */
+.contact-email-prefix {
+  overflow: hidden;
+  white-space: pre;
+  text-overflow: ellipsis;
+  direction: rtl;
+  color: var(--color-accent);
+}
+
+.contact-email-domain {
+  white-space: nowrap;
+  color: var(--color-fg-bold);
+}
+
+/* Where the whole address is wider than its column, as at 200% text on a
+   phone, it stacks: the alias on one row and the domain under it, breaking
+   only before a dot. At `--text-md`, the domain's name ("@gmail.com") still
+   fits a 320px phone whole at 200%. The query measures the container against
+   the real address's 30 characters, never the alias on screen, so nothing
+   moves while an alias types. Another address needs its own length here. */
+@container contact-email (width < 30ch) {
+  .contact-email-link {
+    grid-template-columns: minmax(0, max-content);
+    font-size: var(--text-md);
+  }
+
+  /* The row is wider than a short alias now, and the slot's right-to-left
+     direction would push one to the right edge. A long alias still overflows
+     from the right and clips at its start. */
+  .contact-email-prefix {
+    text-align: left;
+  }
+
+  .contact-email-domain {
+    white-space: normal;
+  }
+}
+
+.contact-hint {
+  margin: 0 0 1.5rem;
+  color: var(--color-fg-light);
+}
+
+@media (max-width: 735px) {
+  .contact-email-link {
+    padding: 0.625rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-email-container {
+    font-size: var(--text-lg);
+  }
+}

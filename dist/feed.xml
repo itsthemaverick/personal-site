@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yashraj Bhogade - Blog</title>
+    <link>https://itsthemaverick.github.io/writing/</link>
+    <description>Articles on AI, machine learning, neural architectures, and software engineering.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://itsthemaverick.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Prompt Injection: Inside the Broken Trust Boundary</title>
+      <link>https://itsthemaverick.github.io/writing/prompt-injection-breaking-the-trust-boundary/</link>
+      <description>How control-plane instructions and untrusted data collapse into a single token stream—direct vs. indirect attacks, RAG poisoning, and a reproducible lab.</description>
+      <pubDate>Mon, 16 Nov 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://itsthemaverick.github.io/writing/prompt-injection-breaking-the-trust-boundary/</guid>
+    </item>
+    <item>
+      <title>AI Red Teaming: Turning Adversarial Chaos into a Repeatable Playbook</title>
+      <link>https://itsthemaverick.github.io/writing/ai-red-teaming-systematic-adversarial-testing/</link>
+      <description>From threat modeling and multi-turn Crescendo trees to automated evaluation harnesses and regression gates you can run locally.</description>
+      <pubDate>Tue, 10 Nov 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://itsthemaverick.github.io/writing/ai-red-teaming-systematic-adversarial-testing/</guid>
+    </item>
+    <item>
+      <title>Why I Chose Parrot OS Over Omarchy for Security &amp; Systems Work</title>
+      <link>https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/</link>
+      <description>Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.</description>
+      <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/</guid>
+    </item>
+    <item>
+      <title>Building a Neural Network from Scratch in C</title>
+      <link>https://itsthemaverick.github.io/writing/building-a-neural-network-from-scratch-in-c/</link>
+      <description>Exploring the mechanics of neural computation, forward propagation, and backpropagation in pure C without external machine learning frameworks.</description>
+      <pubDate>Thu, 15 Oct 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://itsthemaverick.github.io/writing/building-a-neural-network-from-scratch-in-c/</guid>
+    </item>
+    <item>
+      <title>A System and Method for Proof-Based Task Validation and Adaptive Contribution in Collaborative Environments</title>
+      <link>https://dypvp.edu.in</link>
+      <description>Patent Application Under Examination (Co-inventor with Prof. Prajakta P. Pawar). Applicant: Dr. D. Y. Patil Institute of Technology, Pimpri, Pune.</description>
+      <pubDate>Thu, 01 Oct 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://dypvp.edu.in</guid>
+    </item>
+  </channel>
+</rss>

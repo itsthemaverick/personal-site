@@ -1,0 +1,232 @@
+/* ========================================
+   BASE RESET, LINKS & TYPOGRAPHY
+   ======================================== */
+
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-smooth-scroll] {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after,
+    *::backdrop {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  :focus-visible {
+    outline: var(--rule-strong) solid var(--color-focus-ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html:where([data-theme='dark']) {
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:where(:not([data-theme])) {
+      color-scheme: dark;
+    }
+  }
+
+  body {
+    background-color: var(--color-bg-alt);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-normal);
+    padding-top: var(--header-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (max-width: 735px) {
+    body {
+      font-size: var(--text-base);
+    }
+  }
+
+  time,
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  a {
+    color: var(--color-fg);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  @media screen {
+    p a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-decoration-color: var(--color-accent-underline);
+      text-underline-offset: 2px;
+    }
+
+    p a:hover {
+      color: var(--color-accent-hover);
+      text-decoration-color: var(--color-accent);
+    }
+  }
+
+  strong,
+  b {
+    color: var(--color-fg-bold);
+    font-weight: var(--font-weight-medium);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-fg-bold);
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+    margin: 0 0 0.6em 0;
+    text-wrap: balance;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    color: inherit;
+  }
+
+  h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-black);
+    letter-spacing: var(--tracking-display);
+  }
+
+  h2 {
+    font-size: var(--text-2xl);
+    letter-spacing: var(--tracking-display);
+  }
+
+  h3 {
+    font-size: var(--text-xl);
+  }
+
+  h4 {
+    font-size: var(--text-lg);
+  }
+
+  h5 {
+    font-size: var(--text-md);
+  }
+
+  h6 {
+    font-size: var(--text-base);
+  }
+
+  p {
+    margin: 0 0 var(--spacing-element) 0;
+    text-wrap: pretty;
+  }
+
+  code {
+    background: var(--color-surface-subtle);
+    border: var(--rule) solid var(--color-border);
+    border-radius: var(--radius-xs);
+    font-size: var(--text-sm);
+    padding: 0.15em 0.4em;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin: 0 0 var(--spacing-element) 0;
+    padding-left: 1em;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin: 0 0 var(--spacing-element) 0;
+    padding-left: 1em;
+  }
+
+  ul li,
+  ol li {
+    padding-left: 0.5em;
+  }
+
+  blockquote {
+    border-left: solid 4px var(--color-border);
+    font-style: italic;
+    margin: 0 0 var(--spacing-element) 0;
+    padding: 0.5em 0 0.5em var(--spacing-element);
+  }
+
+  hr {
+    border: 0;
+    border-bottom: solid 1px var(--color-border);
+    margin: var(--spacing-element) 0;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.prose a,
+.about-content :where(p, li) a,
+.resume-content .summary a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-underline);
+  text-underline-offset: 2px;
+}
+
+.prose a:hover,
+.about-content :where(p, li) a:hover,
+.resume-content .summary a:hover {
+  color: var(--color-accent-hover);
+  text-decoration-color: var(--color-accent);
+}

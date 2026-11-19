@@ -1,0 +1,111 @@
+/* ========================================
+   RESUME PAGE STYLES
+   ======================================== */
+
+/* Every section opens with the shared header in components/section-header.css,
+   and the gap on `.resume-content` is the only space between sections. */
+
+.resume-page .courses .course-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Screens only: the print viewport is narrower than this breakpoint, and paper
+   keeps two columns. */
+@media screen and (max-width: 735px) {
+  .resume-page .courses .course-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* A sentence that belongs to a section rather than to an entry in it, such as
+   the key under Skills. Supporting copy, so the reading face on a bounded
+   measure, a tone back from the entries. */
+.resume-note {
+  max-width: 53ch;
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-fg-light);
+}
+
+/* On paper the page is set in points, and this would otherwise print larger
+   than the summaries above it. */
+@media print {
+  .resume-note {
+    font-size: 10pt;
+  }
+}
+
+/* Resume page specific */
+.resume-header {
+  margin-bottom: 2rem;
+}
+
+/* The title and the chips keep the same bottom margin, so the summary sits
+   where it did whether the chips share the title's baseline or wrap under it. */
+.resume-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 1rem;
+}
+
+.resume-header-row > * {
+  margin-bottom: 1.25rem;
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resume-print-name {
+  display: none;
+}
+
+/* Printing takes a script, so the button waits for the bootstrap's mark, as
+   the theme toggle does. */
+:root:not([data-theme-choice]) .resume-print-button {
+  display: none;
+}
+
+.resume-summary {
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  color: var(--color-fg);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.resume-nav {
+  margin: var(--spacing-8) 0 var(--spacing-4);
+}
+
+.resume-content {
+  /* The dated gutter, and the gap the spine runs down. Experience entries in
+     cards.css and skills rows in tags.css both read this pair, so the two
+     sections cannot drift onto different rails. */
+  --resume-gutter: 11rem;
+  --resume-gap: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 2.5rem;
+}
+
+.resume-section {
+  scroll-margin-top: calc(var(--header-height) + var(--spacing-24));
+}
+
+/* Printed resumes need contact details, which live in the footer on screen.
+   Shown only by print.css. */
+.resume-print-contact {
+  display: none;
+}

@@ -1,0 +1,120 @@
+/* ========================================
+   DESIGN TOKENS
+   Porcelain paper, neutral ink, deep-red poster field, Newsreader + Inter.
+   ======================================== */
+
+@layer theme {
+  :root {
+    /* Fonts */
+    --font-inter: 'Inter Variable';
+    --font-newsreader: 'Newsreader Variable';
+    --font-newsreader-italic: 'Newsreader Variable';
+
+    --font-display: var(--font-inter), 'Helvetica Neue', sans-serif;
+    --font-body: var(--font-newsreader), Georgia, serif;
+    --font-mono: var(--font-newsreader), Georgia, serif;
+
+    /* Core Palette */
+    --color-bg-alt: #f6f3ed;
+    --color-fg: #292a2e;
+    --color-fg-bold: #292a2e;
+    --color-fg-light: #646269;
+
+    /* Accent */
+    --color-accent: #6f1d1a;
+    --color-accent-hover: #591715;
+    --color-hero: #6f1d1a;
+    --color-on-hero: #faf7ef;
+    --color-on-hero-hover: #ebe6da;
+    --color-accent-fill: var(--color-accent);
+    --color-accent-fill-hover: var(--color-accent-hover);
+    --color-on-accent: #ffffff;
+    --color-accent-underline: color-mix(in srgb, var(--color-accent) 68%, transparent);
+
+    /* Focus Ring */
+    --color-focus-ring: var(--color-accent);
+    --color-focus-ring-fill: var(--color-fg-bold);
+
+    /* Signal */
+    --color-signal: #9a5600;
+    --color-signal-mark: #bc770a;
+
+    /* Borders */
+    --color-border: rgba(35, 39, 46, 0.14);
+    --color-border-bg: rgba(35, 39, 46, 0.08);
+    --color-control-border: #74747c;
+    --color-border-alt: rgba(35, 39, 46, 0.24);
+
+    /* Surfaces */
+    --color-surface-subtle: rgba(35, 39, 46, 0.035);
+    --color-surface-hover: rgba(35, 39, 46, 0.06);
+    --color-fg-muted: rgba(35, 39, 46, 0.55);
+
+    /* Overlays */
+    --color-overlay-darker: rgba(14, 17, 22, 0.45);
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-black: 800;
+
+    /* Font Sizes */
+    --text-ui: 0.8125rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.125rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.75rem;
+    --text-2xl: 2.25rem;
+    --text-3xl: 3rem;
+
+    /* Letter Spacing & Leading */
+    --tracking-display: -0.025em;
+    --tracking-tight: -0.015em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.02em;
+    --leading-tight: 1.15;
+    --leading-snug: 1.4;
+    --leading-normal: 1.65;
+
+    /* Spacing & Measures */
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-7: 1.75rem;
+    --spacing-8: 2rem;
+    --spacing-10: 2.5rem;
+    --spacing-12: 3rem;
+    --spacing-16: 4rem;
+    --spacing-24: 6rem;
+    --spacing-element: var(--spacing-7);
+    --header-height: 4rem;
+    --measure-page: 64rem;
+    --measure-read: 40rem;
+
+    /* Effects */
+    --radius-xs: 1px;
+    --radius-sm: 2px;
+    --radius-full: 999px;
+    --rule: 1px;
+    --rule-strong: 2px;
+
+    /* Motion & Z-Index */
+    --duration-instant: 0.15s;
+    --duration-fast: 0.2s;
+    --duration-normal: 0.3s;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-menu: cubic-bezier(0.4, 0, 0.2, 1);
+    --z-sticky: 100;
+    --z-header: 10000;
+  }
+}
+
+@media (max-width: 735px) {
+  :root {
+    --header-height: 3.5rem;
+  }
+}

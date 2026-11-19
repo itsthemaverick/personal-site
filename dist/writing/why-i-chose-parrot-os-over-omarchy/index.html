@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-choice="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <noscript>
+    <meta name="theme-color" content="#f6f3ed" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#222329" media="(prefers-color-scheme: dark)">
+  </noscript>
+  <script id="theme-init">(function(){try{var c=localStorage.getItem('theme');if(c!=='light'&&c!=='dark')c='system';var d=document.documentElement;d.setAttribute('data-theme-choice',c);var r=c==='system'?(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):c;if(c!=='system')d.setAttribute('data-theme',r);var m=document.createElement('meta');m.name='theme-color';m.setAttribute('data-theme-color','');m.content=r==='dark'?'#222329':'#f6f3ed';document.head.prepend(m);}catch(e){}})();</script>
+  <title>Why I Chose Parrot OS Over Omarchy for Security &amp; Systems Work | Yashraj Bhogade</title>
+  <meta name="description" content="Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.">
+  <meta name="googlebot" content="max-video-preview:-1, max-image-preview:large, max-snippet:-1">
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" href="../../icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../../apple-icon.png">
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="canonical" href="https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yashraj Bhogade">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/">
+  <meta property="og:title" content="Why I Chose Parrot OS Over Omarchy for Security &amp; Systems Work | Yashraj Bhogade">
+  <meta property="og:description" content="Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.">
+  <meta property="og:image" content="https://itsthemaverick.github.io/og/writing/why-i-chose-parrot-os-over-omarchy.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:published_time" content="2026-11-02">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why I Chose Parrot OS Over Omarchy for Security &amp; Systems Work | Yashraj Bhogade">
+  <meta name="twitter:description" content="Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.">
+  <meta name="twitter:image" content="https://itsthemaverick.github.io/og/writing/why-i-chose-parrot-os-over-omarchy.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://itsthemaverick.github.io/#website","url":"https://itsthemaverick.github.io/","name":"Yashraj Bhogade","alternateName":["itsthemaverick.github.io","itsthemaverick"],"description":"Yashraj Bhogade — AI & Machine Learning Engineer, B.Tech student in Artificial Intelligence & Data Science. Experience at SprougHub Foundation and DevKraft.","inLanguage":"en-US","publisher":{"@id":"https://itsthemaverick.github.io/#person"},"image":{"@type":"ImageObject","@id":"https://itsthemaverick.github.io/#website-image","url":"https://itsthemaverick.github.io/images/me.jpg","width":640,"height":640,"caption":"Yashraj Bhogade"}},{"@type":"Person","@id":"https://itsthemaverick.github.io/#person","name":"Yashraj Bhogade","givenName":"Yashraj","familyName":"Bhogade","url":"https://itsthemaverick.github.io/","image":{"@type":"ImageObject","@id":"https://itsthemaverick.github.io/#person-image","url":"https://itsthemaverick.github.io/images/me.jpg","width":640,"height":640,"caption":"Yashraj Bhogade"},"description":"Yashraj Bhogade — AI & Machine Learning Engineer, B.Tech student in Artificial Intelligence & Data Science. Experience at SprougHub Foundation and DevKraft.","jobTitle":"Software Development Engineer & Machine Learning Engineer Intern","email":"yashrajbhogadepatil@gmail.com","sameAs":["https://www.linkedin.com/in/yashraj-bhogade","https://github.com/itsthemaverick"],"worksFor":{"@type":"Organization","name":"SprougHub Foundation","url":"https://sproughub.info"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Dr. D. Y. Patil Institute of Technology, Pimpri, Pune","url":"https://dypvp.edu.in"}]},{"@type":"WebPage","@id":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/#webpage","url":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/","name":"Why I Chose Parrot OS Over Omarchy for Security & Systems Work","isPartOf":{"@id":"https://itsthemaverick.github.io/#website"},"inLanguage":"en-US","description":"Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.","breadcrumb":{"@id":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/#breadcrumb"}},{"@type":"BlogPosting","@id":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/#blogposting","url":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/","mainEntityOfPage":{"@id":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/#webpage"},"isPartOf":{"@id":"https://itsthemaverick.github.io/writing/#blog"},"headline":"Why I Chose Parrot OS Over Omarchy for Security & Systems Work","description":"Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.","inLanguage":"en-US","datePublished":"2026-11-02","dateModified":"2026-11-02","author":{"@id":"https://itsthemaverick.github.io/#person"},"publisher":{"@id":"https://itsthemaverick.github.io/#person"},"image":{"@type":"ImageObject","@id":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/#blogposting-image","url":"https://itsthemaverick.github.io/og/writing/why-i-chose-parrot-os-over-omarchy.png","width":1200,"height":630,"caption":"Why I Chose Parrot OS Over Omarchy for Security & Systems Work — Yashraj Bhogade"}},{"@type":"BreadcrumbList","@id":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://itsthemaverick.github.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://itsthemaverick.github.io/writing/"},{"@type":"ListItem","position":3,"name":"Why I Chose Parrot OS Over Omarchy for Security & Systems Work","item":"https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/"}]}]}</script>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header">
+  <div class="site-brand">
+    <a href="../../" class="site-logo" aria-label="Yashraj Bhogade — home">
+      <span class="logo-text">yb</span>
+      <span class="logo-name">Yashraj Bhogade</span>
+    </a>
+  </div>
+  <nav class="nav-links" aria-label="Primary"><a href="../../about/" class="nav-link">About</a><a href="../../resume/" class="nav-link">Resume</a><a href="../../projects/" class="nav-link">Projects</a><a href="../../writing/" class="nav-link active" aria-current="page">Blog</a><a href="../../speaking/" class="nav-link">Speaking</a><a href="../../contact/" class="nav-link">Contact</a></nav>
+  <div class="nav-actions">
+    <button type="button" class="theme-toggle" aria-label="Theme preference: system.">
+  <span class="theme-toggle-state" data-theme-state="system">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span class="sr-only">Theme preference: system.</span>
+  </span>
+  <span class="theme-toggle-state" data-theme-state="light">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <span class="sr-only">Theme preference: light.</span>
+  </span>
+  <span class="theme-toggle-state" data-theme-state="dark">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <span class="sr-only">Theme preference: dark.</span>
+  </span>
+</button>
+    <div class="hamburger-container">
+      <button type="button" class="hamburger-button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu">
+        <span class="hamburger-icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<dialog id="mobile-nav-menu" aria-label="Navigation menu" class="slide-menu">
+  <div class="slide-menu-sheet">
+    <button type="button" class="slide-menu-close" aria-label="Close navigation menu"><span aria-hidden="true">×</span></button>
+    <ul class="hamburger-ul"><li><a href="../../"><span class="index-li">Yashraj Bhogade</span></a></li><li><a href="../../about/"><span>About</span></a></li><li><a href="../../resume/"><span>Resume</span></a></li><li><a href="../../projects/"><span>Projects</span></a></li><li><a href="../../writing/" class="active" aria-current="page"><span>Blog</span></a></li><li><a href="../../speaking/"><span>Speaking</span></a></li><li><a href="../../contact/"><span>Contact</span></a></li></ul>
+  </div>
+</dialog>
+  <div class="page-container">
+  <main id="main-content" tabindex="-1" class="page-main">
+    <article class="post-page">
+  <div class="reading-progress" aria-hidden="true"><span class="reading-progress-indicator"></span></div>
+  <header class="post-header">
+    <time class="post-date" datetime="2026-11-02">Nov 2, 2026</time>
+    <h1 class="post-title">Why I Chose Parrot OS Over Omarchy for Security &amp; Systems Work</h1>
+    <p class="post-description">Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.</p>
+  </header>
+  <div class="post-content prose"><p>If you spend time in developer circles right now, <strong>Omarchy</strong>—DHH’s opinionated Arch Linux + Hyprland distribution—looks almost impossible to resist. Out of the box, you get razor-sharp Wayland tiling, cohesive terminal aesthetics, Neovim defaults, and a fast, keyboard-first workflow that turns a fresh ThinkPad or Framework laptop into a sleek workstation in minutes.</p>
+<p>I wanted to love it as my daily driver. I ran it, benchmarked my workflow on it, and admired how thoughtfully its creator eliminated Arch’s usual rice-forever paralysis.</p>
+<p>And then I switched back to <strong>Parrot Security OS</strong>.</p>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Screenshot_Parrot_OS.png" alt="Parrot OS desktop environment featuring custom system monitoring and terminal layout" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Parrot Security OS pairs a Debian-based core with pre-configured security tooling, sandboxing, and lightweight desktop ergonomics. Source: Wikimedia Commons.</figcaption></figure>
+<p>This isn’t a tribal “Debian vs. Arch” rant. Omarchy is genuinely brilliant at what it was designed for: <strong>high-velocity Ruby/Rails/web product engineering in a curated Hyprland environment</strong>. Parrot OS was built for a fundamentally different reality: <strong>offensive security, network forensics, C systems work, and handling untrusted binaries without turning your host OS into collateral damage</strong>.</p>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://omarchy.org/brand/social/tokyo-night.png" alt="Omarchy Tokyo Night branded desktop showcase" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Omarchy delivers an opinionated, aesthetically cohesive Arch + Hyprland workstation right out of the installer. Source: omarchy.org.</figcaption></figure>
+<h2 id="two-philosophies-aesthetic-velocity-vs-adversarial-isolation">Two Philosophies: Aesthetic Velocity vs. Adversarial Isolation</h2>
+<p>Every Linux distribution is an implicit thesis about what kind of failure you are willing to tolerate.</p>
+<ul><li><strong>Omarchy’s thesis:</strong> Optimize for <em>developer flow</em>. Keep packages bleeding-edge via Arch + AUR, embrace Wayland/Hyprland tiling ergonomics, and bake every tool preference into a single coherent dotfile stack.</li><li><strong>Parrot OS’s thesis:</strong> Optimize for <em>host integrity and readiness under hostile inputs</em>. Keep the core anchored on Debian Testing, isolate risky tools behind AppArmor and Firejail by default, ship 800+ security utilities pre-wired, and never let a kernel update break your Wi-Fi card or hypervisor two hours before an audit.</li></ul>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Hyprland_screen.png" alt="Hyprland Wayland tiling compositor workspace with terminal windows and status bar" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Hyprland’s dynamic Wayland tiling makes Omarchy fast for keyboard-centric coding, though legacy security GUIs still hit XWayland edge cases. Source: Wikimedia Commons.</figcaption></figure>
+<p>Compare the two platforms interactively across <strong>Security &amp; Audit Labs</strong> versus <strong>Daily Systems &amp; Dev</strong> workloads below:</p>
+<figure class="prose-graphic" data-blog-graphic="distro-architecture-compare" data-caption="Interactive comparison: switch between Security &amp; Audit Labs and Daily Systems &amp; Dev to see where Parrot OS and Omarchy pull ahead."><div class="prose-graphic-mount"><p class="sr-only">Interactive comparison: switch between Security &amp; Audit Labs and Daily Systems &amp; Dev to see where Parrot OS and Omarchy pull ahead.</p></div><figcaption class="prose-figcaption">Interactive comparison: switch between Security &amp; Audit Labs and Daily Systems &amp; Dev to see where Parrot OS and Omarchy pull ahead.</figcaption></figure>
+<h2 id="reason-1-mandatory-access-control-and-firejail-by-default">Reason 1: Mandatory Access Control &amp; Firejail by Default</h2>
+<p>When your daily work includes inspecting unknown GitHub repos, running third-party fuzzers, attaching <code>gdb</code> to suspicious ELF binaries, and firing up packet captures, <strong>your browser and tooling are active attack surfaces</strong>.</p>
+<p>Parrot OS treats sandboxing as a baseline system invariant, not a weekend project:</p>
+<ul><li><strong>AppArmor profiles</strong> enforce Mandatory Access Control (MAC) on core daemons and network tools.</li><li><strong>Firejail</strong> wraps browsers and risky desktop applications inside restricted mount namespaces (<code>noroot</code>, <code>private-etc</code>, <code>seccomp</code> syscall filters) automatically.</li><li><strong>Anonsurf</strong> routes system or lab traffic cleanly through Tor + <code>iptables</code> leak rules when you need clean egress separation during OSINT or external recon.</li></ul>
+<p>On a standard Arch + Hyprland spin like Omarchy, every binary you pull from the AUR runs with your full user UID, full access to <code>~/.ssh</code>, <code>~/.gnupg</code>, <code>~/.aws</code>, and your <code>$DBUS_SESSION_BUS_ADDRESS</code>.</p>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Parrot_OS_logo%2C_2023.svg" alt="Parrot Security OS logo emblem" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Parrot OS builds security isolation directly into its default desktop and CLI profiles. Source: Wikimedia Commons.</figcaption></figure>
+<p>Watch what happens when a compromised plugin or malformed parser tries to read <code>~/.ssh/id_ed25519</code> inside both environments:</p>
+<figure class="prose-graphic" data-blog-graphic="sandbox-isolation-flow" data-caption="Interactive isolation diagram: Parrot OS traps rogue file reads at the AppArmor + Firejail namespace boundary; an unsandboxed desktop session exposes $HOME directly."><div class="prose-graphic-mount"><p class="sr-only">Interactive isolation diagram: Parrot OS traps rogue file reads at the AppArmor + Firejail namespace boundary; an unsandboxed desktop session exposes $HOME directly.</p></div><figcaption class="prose-figcaption">Interactive isolation diagram: Parrot OS traps rogue file reads at the AppArmor + Firejail namespace boundary; an unsandboxed desktop session exposes $HOME directly.</figcaption></figure>
+<h2 id="reason-2-supply-chain-hygiene-signed-debian-apt-vs-aur">Reason 2: Supply-Chain Hygiene (Signed Debian APT vs. AUR)</h2>
+<p>I love the Arch Wiki—it is still the single greatest piece of technical documentation in open-source history. What I do <em>not</em> love during a security audit or a C compiler lab is <code>yay</code> pulling an unreviewed community <code>PKGBUILD</code> from the AUR.</p>
+<table><thead><tr><th>Dimension</th><th>Parrot Security OS</th><th>Omarchy (Arch + Hyprland)</th></tr></thead><tbody><tr><td><strong>Base distribution</strong></td><td>Debian Testing (signed APT repositories)</td><td>Arch Linux Rolling + AUR</td></tr><tr><td><strong>Default desktop</strong></td><td>KDE Plasma 6 (Parrot 7) / MATE</td><td>Hyprland (Wayland tiling WM)</td></tr><tr><td><strong>Security suite</strong></td><td>800+ tools pre-packaged (<code>parrot-tools-full</code>)</td><td>Minimal web-dev tools; security stack installed manually</td></tr><tr><td><strong>Default sandboxing</strong></td><td>Firejail + AppArmor enabled out of the box</td><td>None by default (user-configured)</td></tr><tr><td><strong>Toolchain ABI stability</strong></td><td>Predictable <code>gcc</code> / <code>glibc</code> / <code>libssl</code> snapshots</td><td>Rolling upgrades; occasional ABI &amp; DKMS churn</td></tr><tr><td><strong>Legacy GUI support</strong></td><td>Native X11 / mature Qt &amp; Java rendering</td><td>Wayland-first; XWayland DPI/clipboard friction on Burp/Ghidra</td></tr></tbody></table>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Openlogo-debianV2.svg" alt="Debian GNU/Linux open swirl logo representing the upstream Debian foundation" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Parrot’s Debian foundation pairs cryptographic APT pinning with predictable C/C++ library ABIs. Source: Wikimedia Commons.</figcaption></figure>
+<p>When I’m building a neural network from scratch in C (<code>gcc -O3 -Wall -Wextra</code>) or compiling custom kernel/eBPF probes, I want my toolchain headers, <code>glibc</code> version, and <code>libpcap</code> symbols to stay predictable across a multi-week sprint. On Arch rolling releases, running <code>pacman -Syu</code> mid-project can jump GCC major versions or bump OpenSSL SONAMEs unexpectedly.</p>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Linux_kernel_diagram.png" alt="Linux kernel architecture diagram showing namespaces, virtual file system, and network stack" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Kernel namespaces, cgroups, and LSM hooks like AppArmor govern how isolated your dev and security tools actually remain. Source: Wikimedia Commons.</figcaption></figure>
+<h2 id="reason-3-security-tooling-without-xwayland-friction">Reason 3: Security Tooling Without XWayland Friction</h2>
+<p>Omarchy runs <strong>Hyprland</strong>, which is pure joy for Alacritty/Ghostty, Neovim, and Chromium. The moment you open <strong>Burp Suite</strong>, <strong>Ghidra</strong>, <strong>OWASP ZAP</strong>, or <strong>Wireshark</strong> across mixed-DPI monitors, however, Wayland’s fractional scaling and XWayland Java Swing clipboard quirks show up fast:</p>
+<ul><li>Tiny unreadable fonts inside Swing/AWT windows (<code>Burp</code> / <code>Ghidra</code>) unless you manually export <code>_JAVA_AWT_WM_NONREPARENTING=1</code> and <code>GDK_SCALE</code>.</li><li>Broken drag-and-drop or copy-paste sync between Wayland-native terminals and XWayland security GUIs.</li><li>Screen-sharing / OBS portal hiccups when recording live exploit demos or CTF walkthroughs.</li></ul>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Wireshark_screenshot.png" alt="Wireshark packet inspection interface running on Linux" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Parrot OS configures non-root packet capture capabilities and desktop scaling for tools like Wireshark straight out of the box. Source: Wikimedia Commons.</figcaption></figure>
+<p>With Parrot OS—especially with the modern <strong>KDE Plasma</strong> desktop experience alongside classic MATE—Java security suites, multi-monitor captures, and QEMU/KVM lab networks just work on boot.</p>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/KDE_Plasma_6.3.6_screenshot.png" alt="KDE Plasma 6 desktop environment screenshot showing crisp Breeze styling and window management" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Parrot OS 7’s move toward KDE Plasma brings modern polish while preserving rock-solid compatibility with Java and Qt security tools. Source: Wikimedia Commons.</figcaption></figure>
+<h2 id="reason-4-where-omarchy-still-deserves-credit">Reason 4: Where Omarchy Still Deserves Credit</h2>
+<p>Choosing Parrot OS doesn’t mean pretending Omarchy’s ideas aren’t infectious. Look at Omarchy’s <strong>Osaka Jade</strong> and <strong>Tokyo Night</strong> themes—few Linux distributions ship with that level of typographic and hotkey discipline from minute zero:</p>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://omarchy.org/brand/social/osaka-jade.png" alt="Omarchy Osaka Jade workspace theme banner" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Omarchy sets a high bar for out-of-the-box developer ergonomics, theme consistency, and curated keybindings. Source: omarchy.org.</figcaption></figure>
+<p>If you write Rails, TypeScript, Go, or Next.js apps all day and rarely touch raw sockets, firmware dumps, or untrusted binaries, <strong>Omarchy is genuinely one of the smoothest Linux desktops you can install</strong>. In fact, I happily stole several of Omarchy’s keyboard ergonomics—like single-keystroke workspace switching and clean terminal multiplexing—and brought them straight into my Parrot setup.</p>
+<figure class="prose-figure" style="--figure-width: 1200px"><img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Parrot_OS_Desktop.png" alt="Parrot OS desktop showing integrated security application menus and clean panel layout" loading="lazy" referrerpolicy="no-referrer"><figcaption class="prose-figcaption">Bringing keyboard-driven terminal ergonomics onto Parrot OS gives you the speed of a tiling workflow without sacrificing Debian sandboxing. Source: Wikimedia Commons.</figcaption></figure>
+<h2 id="reproducible-setup-guide-hardened-parrot-os-dev-and-red-team-workstation">Reproducible Setup Guide: Hardened Parrot OS Dev &amp; Red-Team Workstation</h2>
+<p>Want to reproduce my exact Parrot OS workstation configuration—complete with Firejail verification, non-root Wireshark capabilities, isolated C/Python build sandboxes, and clean Docker/QEMU lab networking? Follow these steps on a fresh <strong>Parrot OS (Home or Security Edition)</strong> install or inside a VM.</p>
+<h3 id="step-1-verify-kernel-apparmor-and-firejail-enforcement">Step 1: Verify Kernel, AppArmor, and Firejail Enforcement</h3>
+<p>First, confirm that AppArmor profiles and Firejail namespaces are active before installing anything extra:</p>
+<div class="prose-fence"><span class="prose-fence-lang" aria-hidden="true">bash</span><span class="sr-only">bash code block</span><pre><code class="language-bash"># 1. Verify Parrot release and Debian base
+cat /etc/os-release
+
+# 2. Confirm AppArmor MAC enforcement is active
+sudo aa-status | head -n 20
+
+# 3. Verify Firejail is installed and enforcing profiles
+firejail --version
+ls /etc/firejail/*.profile | wc -l</code></pre></div>
+<h3 id="step-2-update-deterministically-and-install-core-systems-tooling">Step 2: Update Deterministically &amp; Install Core Systems Tooling</h3>
+<p>Unlike rolling-release updates, Parrot recommends <code>parrot-upgrade</code> so meta-packages and security repository pins stay consistent:</p>
+<div class="prose-fence"><span class="prose-fence-lang" aria-hidden="true">bash</span><span class="sr-only">bash code block</span><pre><code class="language-bash">sudo apt update &amp;&amp; sudo parrot-upgrade -y
+
+# Essential C / ML / Security build toolchain
+sudo apt install -y \
+  build-essential clang gcc gdb valgrind \
+  cmake ninja-build python3-venv python3-pip \
+  tmux neovim ripgrep fd-find jq curl git \
+  qemu-kvm libvirt-daemon-system bridge-utils</code></pre></div>
+<h3 id="step-3-sandbox-untrusted-repos-and-cloned-tools-with-firejail">Step 3: Sandbox Untrusted Repos &amp; Cloned Tools with Firejail</h3>
+<p>Whenever you audit an unfamiliar open-source tool or run an untrusted Python/Node script, wrap it in a temporary private Firejail sandbox so it <strong>cannot read your real <code>~/.ssh</code> or <code>~/.gitconfig</code></strong>:</p>
+<div class="prose-fence"><span class="prose-fence-lang" aria-hidden="true">bash</span><span class="sr-only">bash code block</span><pre><code class="language-bash"># Create an ephemeral sandbox directory
+mkdir -p ~/labs/untrusted-audit
+
+# Launch an isolated shell with:
+# - No access to real $HOME (~/.ssh, ~/.gnupg hidden)
+# - Read-only /etc subset
+# - No root escalation allowed
+firejail \
+  --private=~/labs/untrusted-audit \
+  --noroot \
+  --caps.drop=all \
+  --seccomp \
+  --net=none \
+  bash</code></pre></div>
+<p>Verify inside that shell that <code>ls ~/.ssh</code> fails and <code>ping -c 1 1.1.1.1</code> is blocked at the network namespace boundary!</p>
+<h3 id="step-4-configure-non-root-packet-capture-and-lab-isolation">Step 4: Configure Non-Root Packet Capture &amp; Lab Isolation</h3>
+<p>Check that your user belongs to <code>wireshark</code> and <code>libvirt</code> (never run full GUI tools as <code>root</code>):</p>
+<div class="prose-fence"><span class="prose-fence-lang" aria-hidden="true">bash</span><span class="sr-only">bash code block</span><pre><code class="language-bash">sudo usermod -aG wireshark,libvirt,kvm &quot;$USER&quot;
+
+# Verify dumpcap has minimal POSIX capabilities instead of full root
+getcap /usr/bin/dumpcap
+# Expected: /usr/bin/dumpcap cap_net_admin,cap_net_raw=eip</code></pre></div>
+<h3 id="step-5-test-both-worlds-side-by-side-in-qemu">Step 5: Test Both Worlds Side by Side in QEMU</h3>
+<p>Before wiping your main disk, you can boot both <strong>Parrot OS</strong> and <strong>Omarchy / Arch</strong> inside KVM in under five minutes to compare latencies, Java GUI scaling, and memory footprint yourself:</p>
+<div class="prose-fence"><span class="prose-fence-lang" aria-hidden="true">bash</span><span class="sr-only">bash code block</span><pre><code class="language-bash"># Create a 30G sparse qcow2 image for testing
+qemu-img create -f qcow2 parrot-test.qcow2 30G
+
+# Boot with KVM hardware acceleration and 4 vCPUs / 8GB RAM
+qemu-system-x86_64 \
+  -enable-kvm \
+  -cpu host \
+  -smp 4 \
+  -m 8192 \
+  -drive file=parrot-test.qcow2,format=qcow2 \
+  -cdrom ~/Downloads/Parrot-security-6.3_amd64.iso \
+  -boot d \
+  -vga virtio \
+  -display gtk,gl=on</code></pre></div>
+<h2 id="the-verdict">The Verdict</h2>
+<p>Omarchy proved that Linux desktops don’t have to look like 2009 to feel fast. For pure web engineering, it’s a joy.</p>
+<p>But an operating system isn’t just a wallpaper and a window manager—it’s your <strong>last line of containment</strong> when your job involves breaking models, dissecting malware samples, auditing third-party code, and debugging C memory layouts. Parrot OS gives me AppArmor, Firejail, signed Debian stability, zero XWayland tool friction, and an out-of-the-box security lab that never surprises me on deadline day.</p>
+<p>That trade-off is an easy win every single time.</p></div>
+</article>
+<nav class="post-pager" aria-label="Older and newer posts">
+  <a href="../../writing/building-a-neural-network-from-scratch-in-c/" class="post-pager-older"><span class="post-pager-label">Older</span><span class="post-pager-title">Building a Neural Network from Scratch in C</span></a>
+  <a href="../../writing/ai-red-teaming-systematic-adversarial-testing/" class="post-pager-newer"><span class="post-pager-label">Newer</span><span class="post-pager-title">AI Red Teaming: Turning Adversarial Chaos into a Repeatable Playbook</span></a>
+</nav>
+  </main>
+  <footer class="site-footer-new">
+  <div class="footer-content">
+    <div class="footer-identity">
+      <a href="../../" class="footer-avatar">
+        <span class="portrait"><img src="../../images/me.jpg" alt="Yashraj Bhogade" width="80" height="80" loading="lazy" decoding="async"></span>
+      </a>
+      <div class="footer-info">
+        <span class="footer-name">Yashraj Bhogade</span>
+        <p class="footer-role">Software Development Engineer &amp; Machine Learning Engineer Intern at SprougHub Foundation</p>
+        <p class="footer-copyright">&copy; 2026 · <a href="https://github.com/itsthemaverick/personal-site" target="_blank" rel="noopener noreferrer">Source<span class="sr-only"> (opens in new tab)</span></a></p>
+      </div>
+    </div>
+    <div class="footer-right">
+      <nav class="footer-links" aria-label="Site"><a href="../../about/">About</a><a href="../../resume/">Resume</a><a href="../../projects/">Projects</a><a href="../../writing/">Blog</a><a href="../../speaking/">Speaking</a><a href="../../stats/">Stats</a><a href="../../contact/">Contact</a></nav>
+      <ul class="icons"><li><a href="https://www.linkedin.com/in/yashraj-bhogade" aria-label="LinkedIn (opens in new tab)" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M100.3 448l-92.9 0 0-299.1 92.9 0 0 299.1zM53.8 108.1C24.1 108.1 0 83.5 0 53.8 0 39.5 5.7 25.9 15.8 15.8s23.8-15.8 38-15.8 27.9 5.7 38 15.8 15.8 23.8 15.8 38c0 29.7-24.1 54.3-53.8 54.3zM447.9 448l-92.7 0 0-145.6c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7l0 148.1-92.8 0 0-299.1 89.1 0 0 40.8 1.3 0c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3l0 164.3-.1 0z" /></svg></a></li><li><a href="https://github.com/itsthemaverick" aria-label="GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M216.5 362.5c-66-8-112.5-55.5-112.5-117 0-25 9-52 24-70-6.5-16.5-5.5-51.5 2-66 20-2.5 47 8 63 22.5 19-6 39-9 63.5-9s44.5 3 62.5 8.5c15.5-14 43-24.5 63-22 7 13.5 8 48.5 1.5 65.5 16 19 24.5 44.5 24.5 70.5 0 61.5-46.5 108-113.5 116.5 17 11 28.5 35 28.5 62.5l0 52C323 491.5 335.5 500 350.5 494 441 459.5 512 369 512 257 512 115.5 397 0 255.5 0S0 115.5 0 257c0 111 70.5 203 165.5 237.5 13.5 5 26.5-4 26.5-17.5l0-40c-7 3-16 5-24 5-33 0-52.5-18-66.5-51.5-5.5-13.5-11.5-21.5-23-23-6-.5-8-3-8-6 0-6 10-10.5 20-10.5 14.5 0 27 9 40 27.5 10 14.5 20.5 21 33 21s20.5-4.5 32-16c8.5-8.5 15-16 21-21z" /></svg></a></li><li><a href="mailto:yashrajbhogadepatil@gmail.com" aria-label="Email"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path d="M61.4 64C27.5 64 0 91.5 0 125.4 0 126.3 0 127.1 .1 128L0 128 0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256-.1 0c0-.9 .1-1.7 .1-2.6 0-33.9-27.5-61.4-61.4-61.4L61.4 64zM464 192.3L464 384c0 8.8-7.2 16-16 16L64 400c-8.8 0-16-7.2-16-16l0-191.7 154.8 117.4c31.4 23.9 74.9 23.9 106.4 0L464 192.3zM48 125.4C48 118 54 112 61.4 112l389.2 0c7.4 0 13.4 6 13.4 13.4 0 4.2-2 8.2-5.3 10.7L280.2 271.5c-14.3 10.8-34.1 10.8-48.4 0L53.3 136.1c-3.3-2.5-5.3-6.5-5.3-10.7z" /></svg></a></li></ul>
+    </div>
+  </div>
+</footer>
+</div>
+  <script type="module" src="../../assets/js/main.js"></script>
+</body>
+</html>

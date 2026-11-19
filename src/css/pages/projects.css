@@ -1,0 +1,719 @@
+/* ========================================
+   PROJECTS PAGE (LIVE GITHUB REGISTER)
+   All typography on the Projects page uses Newsreader (--font-body).
+   Editorial controls, metrics strip, language stack, activity pulse,
+   and interactive repository inspection aligned with site tokens.
+   ======================================== */
+
+.projects-page,
+.projects-page h1,
+.projects-page h2,
+.projects-page h3,
+.projects-page p,
+.projects-page button,
+.projects-page input,
+.projects-page select,
+.projects-page pre,
+.projects-page code,
+.projects-page .page-title,
+.projects-page .page-subtitle,
+.projects-page .section-heading,
+.projects-page .section-header-meta,
+.projects-page .project-dates,
+.projects-page .project-entry-role,
+.projects-page .project-entry-title,
+.projects-page .project-entry-desc,
+.projects-page .project-entry-external,
+.projects-page .tech-tag,
+.projects-page .button {
+  font-family: var(--font-body);
+}
+
+.gh-projects-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ========================================
+   LIVE STATUS BAR
+   ======================================== */
+
+.gh-live-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding: 0.85rem 1rem;
+  background: var(--color-surface-subtle);
+  border: var(--rule) solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.gh-live-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.gh-pulse-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--color-signal-mark);
+  flex-shrink: 0;
+  animation: gh-pulse 2.2s ease-in-out infinite;
+}
+
+.gh-pulse-dot--static {
+  animation: none;
+}
+
+.gh-pulse-dot[data-live='false'] {
+  background: var(--color-control-border);
+}
+
+@keyframes gh-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+.gh-live-label {
+  color: var(--color-fg-bold);
+  font-weight: var(--font-weight-medium);
+}
+
+.gh-live-sep {
+  color: var(--color-border-alt);
+}
+
+.gh-profile-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-underline);
+  text-underline-offset: 0.15em;
+}
+
+.gh-profile-link:hover,
+.gh-profile-link:focus-visible {
+  color: var(--color-accent-hover);
+}
+
+.gh-sync-time {
+  font-variant-numeric: tabular-nums;
+}
+
+.gh-live-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gh-toggle-btn {
+  appearance: none;
+  background: var(--color-bg-alt);
+  border: var(--rule) solid var(--color-control-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  min-height: 2rem;
+  padding: 0 0.7rem;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.gh-toggle-btn:hover {
+  background: var(--color-surface-hover);
+}
+
+.gh-toggle-btn.is-active {
+  border-color: var(--color-signal-mark);
+  color: var(--color-signal);
+}
+
+.gh-toggle-btn:focus-visible,
+.gh-lang-chip:focus-visible,
+.gh-scope-btn:focus-visible,
+.gh-action-btn:focus-visible,
+.gh-action-link:focus-visible,
+.gh-topic-btn:focus-visible,
+.gh-inline-reset:focus-visible,
+.gh-search-input:focus-visible,
+.gh-sort-select:focus-visible,
+.gh-repo-link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.gh-notice {
+  margin: -1rem 0 0;
+  padding: 0.65rem 0.9rem;
+  border-left: var(--rule-strong) solid var(--color-signal-mark);
+  background: var(--color-surface-subtle);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-fg);
+}
+
+/* ========================================
+   METRICS STRIP
+   ======================================== */
+
+.gh-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: var(--rule) solid var(--color-border);
+  border-bottom: var(--rule) solid var(--color-border);
+}
+
+.gh-metric-card {
+  padding: 1rem 0.75rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.gh-metric-card + .gh-metric-card {
+  padding-left: 1rem;
+  border-left: var(--rule) solid var(--color-border);
+}
+
+.gh-metric-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.gh-metric-value {
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  color: var(--color-fg-bold);
+}
+
+.gh-metric-value--signal {
+  color: var(--color-signal);
+}
+
+/* ========================================
+   LANGUAGES & ACTIVITY PANELS
+   ======================================== */
+
+.gh-languages-panel,
+.gh-activity-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.gh-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.gh-panel-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.gh-inline-reset {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0.15rem 0;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-underline);
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+.gh-lang-bar {
+  display: flex;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  background: var(--color-surface-subtle);
+  border: var(--rule) solid var(--color-border);
+}
+
+.gh-lang-segment {
+  display: block;
+  height: 100%;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.gh-lang-segment + .gh-lang-segment {
+  border-left: 1px solid var(--color-bg-alt);
+}
+
+.gh-lang-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.gh-lang-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  border: var(--rule) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.gh-lang-chip:hover {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-control-border);
+}
+
+.gh-lang-chip.is-active {
+  background: var(--color-accent-fill);
+  border-color: var(--color-accent-fill);
+  color: var(--color-on-accent);
+}
+
+.gh-lang-chip.is-active .gh-lang-count {
+  color: var(--color-on-accent);
+}
+
+.gh-lang-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.gh-lang-count {
+  color: var(--color-fg-light);
+}
+
+.gh-activity-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.gh-activity-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.65rem;
+  padding: 0.55rem 0;
+  border-bottom: var(--rule) solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+}
+
+.gh-activity-badge {
+  padding: 0.1rem 0.45rem;
+  border: var(--rule) solid var(--color-border-alt);
+  border-radius: var(--radius-xs);
+  color: var(--color-fg-bold);
+}
+
+.gh-activity-repo {
+  color: var(--color-accent);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-underline);
+  text-underline-offset: 0.15em;
+}
+
+.gh-activity-detail {
+  color: var(--color-fg-light);
+}
+
+.gh-activity-time {
+  margin-left: auto;
+  color: var(--color-fg-light);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
+   SEARCH, SCOPE & SORT CONTROLS
+   ======================================== */
+
+.gh-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: var(--rule) solid var(--color-border);
+}
+
+.gh-search-wrap {
+  width: 100%;
+}
+
+.gh-search-input {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  background: var(--color-bg-alt);
+  border: var(--rule) solid var(--color-control-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-fg-bold);
+}
+
+.gh-search-input::placeholder {
+  color: var(--color-fg-light);
+}
+
+.gh-scope-sort {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.gh-scope-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.gh-scope-btn {
+  appearance: none;
+  padding: 0.35rem 0.7rem;
+  background: transparent;
+  border: var(--rule) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.gh-scope-btn:hover {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-control-border);
+}
+
+.gh-scope-btn.is-active {
+  background: var(--color-accent-fill);
+  border-color: var(--color-accent-fill);
+  color: var(--color-on-accent);
+}
+
+.gh-sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gh-sort-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.gh-sort-select {
+  min-height: 2rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--color-bg-alt);
+  border: var(--rule) solid var(--color-control-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-bold);
+  cursor: pointer;
+}
+
+/* ========================================
+   REPOSITORY REGISTER ROWS
+   ======================================== */
+
+.gh-repo-item.is-animated {
+  animation: gh-row-enter var(--duration-fast) var(--ease-out) both;
+}
+
+@keyframes gh-row-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gh-repo-entry {
+  align-items: start;
+}
+
+.gh-gutter-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg);
+}
+
+.gh-gutter-meta {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.gh-repo-title {
+  overflow-wrap: anywhere;
+}
+
+.gh-repo-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gh-repo-link:hover,
+.gh-repo-link:focus-visible {
+  color: var(--color-accent);
+}
+
+.gh-repo-link:hover .project-entry-external,
+.gh-repo-link:focus-visible .project-entry-external {
+  color: var(--color-accent);
+  transform: translate(1px, -1px);
+}
+
+.gh-repo-slug {
+  margin: -0.2rem 0 0.6rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+  overflow-wrap: anywhere;
+}
+
+.gh-repo-desc--empty {
+  color: var(--color-fg-light);
+  font-style: italic;
+}
+
+.gh-repo-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg-light);
+}
+
+.gh-repo-stat strong {
+  color: var(--color-fg-bold);
+  font-weight: var(--font-weight-medium);
+}
+
+.gh-topic-btn {
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.gh-topic-btn:hover {
+  border-color: var(--color-control-border);
+  color: var(--color-fg-bold);
+}
+
+.gh-repo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.gh-action-btn,
+.gh-action-link {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: 0.25rem 0.65rem;
+  background: var(--color-bg-alt);
+  border: var(--rule) solid var(--color-control-border);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-bold);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.gh-action-btn:hover,
+.gh-action-link:hover {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-fg-bold);
+}
+
+.gh-action-link {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ========================================
+   INLINE README DRAWER
+   ======================================== */
+
+.gh-readme-drawer {
+  margin-top: 0.9rem;
+  padding: 0.85rem 1rem;
+  background: var(--color-surface-subtle);
+  border: var(--rule) solid var(--color-border-alt);
+  border-radius: var(--radius-sm);
+}
+
+.gh-readme-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: var(--rule) solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.gh-readme-head a {
+  color: var(--color-accent);
+}
+
+.gh-readme-content {
+  margin: 0;
+  max-height: 20rem;
+  overflow: auto;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--color-fg);
+}
+
+.gh-readme-status {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-fg-light);
+}
+
+.gh-empty-state {
+  padding: 2rem 0;
+  border-bottom: var(--rule) solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  color: var(--color-fg-light);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS (320px & 200% zoom)
+   ======================================== */
+
+@media (max-width: 720px) {
+  .gh-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gh-metric-card:nth-child(3) {
+    padding-left: 0;
+    border-left: none;
+    border-top: var(--rule) solid var(--color-border);
+  }
+
+  .gh-metric-card:nth-child(4) {
+    border-top: var(--rule) solid var(--color-border);
+  }
+}
+
+@media (max-width: 640px) {
+  .gh-live-bar {
+    padding: 0.75rem;
+  }
+
+  .gh-activity-time {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-pulse-dot {
+    animation: none;
+  }
+
+  .gh-lang-segment,
+  .gh-toggle-btn,
+  .gh-lang-chip,
+  .gh-scope-btn,
+  .gh-action-btn,
+  .gh-action-link {
+    transition: none;
+  }
+}

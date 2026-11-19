@@ -1,0 +1,736 @@
+/* ========================================
+   WRITING PAGE STYLES
+   Blog list and individual post pages
+   ======================================== */
+
+/* The list itself is the register shared with /projects and /speaking
+   (cards.css); only the header row is the page's own. */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ========================================
+   BLOG POST PAGE
+   Individual post layout and typography
+   ======================================== */
+
+/* The article occupies the page measure and the reading measure is applied to
+   the prose inside it, rather than to the article itself. Capping the article
+   left a wide figure nothing to grow into: a block at `width: auto` fills its
+   containing block, so a larger `max-width` on the figure did nothing. */
+.post-page {
+  /* The reading progress timeline: 0 when the article's top reaches the top
+     of the viewport, 1 when its end reaches the bottom. */
+  view-timeline: --post-page block;
+}
+
+.reading-progress {
+  position: fixed;
+  z-index: var(--z-header);
+  top: var(--header-height);
+  right: 0;
+  left: 0;
+  height: var(--rule);
+  pointer-events: none;
+  background: var(--color-border);
+}
+
+.reading-progress-indicator {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-signal-mark);
+  transform-origin: left center;
+  /* The shorthand resets the timeline and range, so they follow it. */
+  animation: reading-progress linear both;
+  animation-timeline: --post-page;
+  animation-range: contain;
+}
+
+@keyframes reading-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Without scroll timelines nothing drives the bar, and the shorthand alone
+   would finish at once and draw it full, so it is not drawn at all. */
+@supports not (animation-timeline: view()) {
+  .reading-progress {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress {
+    display: none;
+  }
+}
+
+.post-header {
+  max-width: var(--measure-read);
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: var(--rule) solid var(--color-border);
+}
+
+.post-date {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+  margin-bottom: 0.75rem;
+}
+
+.post-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+}
+
+.post-description {
+  font-size: var(--text-md);
+  color: var(--color-fg-light);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+/* Prose styling for markdown content */
+.prose {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--color-fg);
+}
+
+/* Continuous prose is held to the reading measure one block at a time, which is
+   what leaves the rest of the page measure available to a wide figure. */
+.prose > * {
+  max-width: var(--measure-read);
+}
+
+.prose h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  margin: 3rem 0 0.75rem;
+}
+
+.prose h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 2rem 0 0.75rem;
+}
+
+.prose h4 {
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-semibold);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.prose h2,
+.prose h3,
+.prose h4,
+.prose-anchor-alias {
+  scroll-margin-top: calc(var(--header-height) + var(--spacing-6));
+}
+
+.prose-anchor-alias {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.prose p {
+  margin: 1rem 0;
+}
+
+.prose strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+.prose ul,
+.prose ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin: 0.5rem 0;
+}
+
+.prose blockquote {
+  border-left: var(--rule-strong) solid var(--color-accent);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--color-fg-light);
+  font-family: var(--font-newsreader-italic), var(--font-body);
+  font-style: italic;
+}
+
+.prose em,
+.prose i {
+  font-family: var(--font-newsreader-italic), var(--font-body);
+}
+
+/* The wrapper carries the block's margin so the language plate can be
+   positioned against the fence's own top hairline. */
+.prose-fence {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.prose pre {
+  background: var(--color-surface-subtle);
+  border: var(--rule) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* Annotation on the rule that is already there: the language breaks the top
+   hairline the way a callout breaks a border on a drawing. Ink, not amber — a
+   fence's language is a static fact, not a live reading. */
+.prose-fence-lang {
+  position: absolute;
+  top: 0;
+  right: 0.75rem;
+  max-width: calc(100% - 1.5rem);
+  transform: translateY(-50%);
+  padding: 0 0.4rem;
+  /* Masks the hairline it straddles and nothing else, so the focus ring on the
+     fence below still reads as an unbroken rectangle. */
+  background: linear-gradient(var(--color-bg-alt), var(--color-bg-alt)) center / 100%
+    calc(var(--rule) + 2px) no-repeat;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  color: var(--color-fg-light);
+  pointer-events: none;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+.prose img {
+  border-radius: var(--radius-sm);
+  height: auto;
+  margin: 1.5rem 0;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.prose th,
+.prose td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: var(--rule) solid var(--color-border);
+  vertical-align: top;
+}
+
+.prose th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-fg-bold);
+  border-bottom: var(--rule-strong) solid var(--color-border-alt);
+}
+
+/* ========================================
+   FIGURES
+   A screenshot is usually evidence — a dollar figure, a graph — so it is
+   allowed to reach its own intrinsic width rather than being crushed into the
+   reading measure. `--figure-width` is the build-time measurement, set inline
+   by PostContent, so a measured local figure is never upscaled past its own
+   pixels. Remote images use a documented fallback because their bytes are not
+   available to the build.
+   ======================================== */
+
+.prose-figure {
+  margin: 2rem 0;
+  /* Opting out of the per-block reading measure above: a `max-width` would
+     otherwise beat any width set here. */
+  max-width: none;
+  width: min(var(--figure-width, 100%), var(--measure-read), 100%);
+}
+
+.prose .prose-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: var(--rule) solid var(--color-border);
+}
+
+.prose .prose-figure > a {
+  display: block;
+}
+
+/* A caption is a sentence, so it is set in the reading face, a size down. */
+.prose-figcaption {
+  /* The figure may be wider than the reading measure; its caption is still
+     text, so it is not. */
+  max-width: var(--measure-read);
+  margin-top: 0.6rem;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-fg-light);
+  text-wrap: pretty;
+}
+
+/* Above this width there is real room beside the reading column for a wide
+   figure to use. `100%` is the
+   article's own content box, so this can never overflow the page. Scoped to
+   `screen` so the printed article keeps its figures inside the text column. */
+@media screen and (min-width: 980px) {
+  .prose-figure {
+    width: min(var(--figure-width, 100%), 100%);
+  }
+}
+
+/* ========================================
+   INTERACTIVE BLOG GRAPHICS & ANIMATIONS
+   ======================================== */
+
+.prose-graphic {
+  margin: 2.25rem 0;
+  max-width: min(52rem, 100%);
+  width: 100%;
+}
+
+.prose-graphic-card {
+  background: var(--color-surface-subtle);
+  border: var(--rule) solid var(--color-border-alt);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.25rem;
+}
+
+.prose-graphic-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: var(--rule) solid var(--color-border);
+}
+
+.prose-graphic-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.prose-graphic-tab,
+.prose-graphic-toggle {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+  min-height: 1.9rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-xs);
+  border: var(--rule) solid var(--color-control-border);
+  background: var(--color-bg-alt);
+  color: var(--color-fg);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.prose-graphic-tab:hover,
+.prose-graphic-toggle:hover {
+  background: var(--color-surface-hover);
+}
+
+.prose-graphic-tab.is-active {
+  background: var(--color-accent-fill);
+  border-color: var(--color-accent-fill);
+  color: var(--color-on-accent);
+}
+
+.prose-graphic-toggle.is-active {
+  border-color: var(--color-signal-mark);
+  color: var(--color-signal);
+}
+
+.prose-graphic-stream {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.prose-token {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.45rem;
+  border-radius: var(--radius-xs);
+  border: var(--rule) solid var(--color-border);
+  background: var(--color-bg-alt);
+  color: var(--color-fg);
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.prose-token-sys {
+  border-color: var(--color-control-border);
+  color: var(--color-fg-bold);
+}
+
+.prose-token-payload,
+.prose-token-tool {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.prose-token.is-quarantined {
+  opacity: 0.55;
+  border-style: dashed;
+  text-decoration: line-through;
+}
+
+.prose-token.is-pulsing {
+  transform: translateY(-2px);
+  border-color: var(--color-signal-mark);
+  box-shadow: 0 2px 0 var(--color-signal-mark);
+}
+
+.prose-graphic-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
+}
+
+.prose-meter-row {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 12rem) 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.prose-meter-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.prose-meter-track {
+  height: 0.55rem;
+  width: 100%;
+  background: var(--color-bg-alt);
+  border: var(--rule) solid var(--color-border);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+
+.prose-meter-fill {
+  height: 100%;
+  transition: width 360ms var(--ease-out);
+}
+
+.prose-meter-safe {
+  background: var(--color-accent);
+}
+
+.prose-meter-danger,
+.prose-meter-signal {
+  background: var(--color-signal-mark);
+}
+
+.prose-meter-muted {
+  background: var(--color-control-border);
+}
+
+.prose-meter-val {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-fg-bold);
+  min-width: 3.5rem;
+  text-align: right;
+}
+
+.prose-graphic-status {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-fg);
+}
+
+.prose-graphic-badge {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-xs);
+  border: var(--rule) solid var(--color-control-border);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-fg-bold);
+}
+
+.prose-graphic-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.prose-svg-node {
+  cursor: pointer;
+}
+
+.prose-svg-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.prose-svg-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.prose-svg-caption-mono {
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.prose-svg-flow {
+  animation: prose-dash-flow 1.2s linear infinite;
+}
+
+@keyframes prose-dash-flow {
+  from {
+    stroke-dashoffset: 32;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.prose-graphic-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.prose-detail-col p,
+.prose-redteam-phase-box p {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.prose-detail-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-signal);
+}
+
+.prose-redteam-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.prose-redteam-phase-box {
+  padding: 0.85rem;
+  background: var(--color-bg-alt);
+  border: var(--rule) solid var(--color-border);
+  border-radius: var(--radius-xs);
+}
+
+.prose-redteam-phase-box h4 {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+}
+
+.prose-legend {
+  display: flex;
+  gap: 0.85rem;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.prose-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.prose-swatch {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+}
+
+.prose-swatch-parrot {
+  background: var(--color-accent);
+}
+
+.prose-swatch-omarchy {
+  background: var(--color-signal-mark);
+}
+
+.prose-compare-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.prose-compare-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+}
+
+.prose-compare-scores {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+}
+
+.prose-dual-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.prose-compare-note {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-fg-light);
+}
+
+@media (max-width: 640px) {
+  .prose-graphic-card {
+    padding: 0.85rem;
+  }
+
+  .prose-meter-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .prose-meter-val {
+    text-align: left;
+  }
+
+  .prose-graphic-detail,
+  .prose-redteam-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prose-svg-flow {
+    animation: none;
+  }
+
+  .prose-meter-fill,
+  .prose-token {
+    transition: none;
+  }
+}
+
+/* The end of a post: the older post on the left and the newer on the right,
+   as pages turn, on the reading column under a register hairline. */
+.post-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-6) var(--spacing-8);
+  max-width: var(--measure-read);
+  margin-top: var(--spacing-16);
+  padding-top: var(--spacing-6);
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.post-pager-newer {
+  grid-column: 2;
+  text-align: right;
+}
+
+.post-pager-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-display);
+  font-size: var(--text-ui);
+  color: var(--color-fg-light);
+}
+
+.post-pager-title {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+  text-wrap: pretty;
+}
+
+@media (max-width: 640px) {
+  .post-pager {
+    grid-template-columns: 1fr;
+  }
+
+  .post-pager-newer {
+    grid-column: auto;
+    text-align: left;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "yashraj-portfolio-static",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Zero-framework Markdown-driven static portfolio migrated from Next.js to pure HTML5, CSS3, and Vanilla JavaScript for GitHub Pages.",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build-static.mjs",
+    "build:ghpages": "node scripts/build-static.mjs --base-path=/personal-site",
+    "serve": "node -e \"import('node:http').then(({createServer})=>import('node:fs').then(fs=>import('node:path').then(path=>{const root=path.resolve('dist');createServer((req,res)=>{let u=decodeURIComponent((req.url||'/').split('?')[0]);let p=path.join(root,u.endsWith('/')?u+'index.html':u);if(!p.startsWith(root))return res.writeHead(403).end();if(!fs.existsSync(p)||fs.statSync(p).isDirectory()){p=fs.existsSync(path.join(root,u,'index.html'))?path.join(root,u,'index.html'):path.join(root,'404.html');res.statusCode=p.endsWith('404.html')?404:200;}const ext=path.extname(p);const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.xml':'application/xml; charset=utf-8','.woff2':'font/woff2','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.ico':'image/x-icon','.svg':'image/svg+xml','.txt':'text/plain; charset=utf-8'};res.setHeader('Content-Type',types[ext]||'application/octet-stream');fs.createReadStream(p).pipe(res);}).listen(4173,()=>console.log('Static preview listening on http://127.0.0.1:4173'));})))\""
+  }
+}

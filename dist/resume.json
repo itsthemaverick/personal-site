@@ -1,0 +1,175 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Yashraj Bhogade",
+    "label": "AI & Machine Learning Engineer",
+    "image": "https://itsthemaverick.github.io/images/me.jpg",
+    "email": "yashrajbhogadepatil@gmail.com",
+    "url": "https://itsthemaverick.github.io/",
+    "summary": "Yashraj Bhogade — AI & Machine Learning Engineer, B.Tech student in Artificial Intelligence & Data Science. Experience at SprougHub Foundation and DevKraft.",
+    "location": {
+      "city": "Pune"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "yashraj-bhogade",
+        "url": "https://www.linkedin.com/in/yashraj-bhogade"
+      },
+      {
+        "network": "GitHub",
+        "username": "itsthemaverick",
+        "url": "https://github.com/itsthemaverick"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "SprougHub Foundation",
+      "position": "Software Development Engineer & Machine Learning Engineer Intern",
+      "url": "https://sproughub.info",
+      "startDate": "2026-09-01",
+      "summary": "Worked on web platforms and Project JHEP, an AI-powered Learning Management System; contributed to frontend, backend, and AI/ML development. Served as Project Lead, coordinating a 10-member team.",
+      "highlights": [
+        "Contributed to frontend, backend, and AI/ML development for Project JHEP, an AI-powered Learning Management System.",
+        "Served as Project Lead, coordinating a 10-member team across engineering tasks."
+      ]
+    },
+    {
+      "name": "DevKraft",
+      "position": "Research Intern",
+      "url": "https://devkraft.in",
+      "startDate": "2026-09-01",
+      "endDate": "2026-11-01",
+      "summary": "Contributed to Deepreach, a web-based company discovery and research workflow for identifying potential event sponsors. Worked on agentic AI workflows, prompt design, and guardrails for structured company discovery.",
+      "highlights": [
+        "Contributed to Deepreach, building company discovery and research workflows for potential event sponsors.",
+        "Designed agentic AI workflows, prompt designs, and guardrails for structured company discovery by criteria such as location and market capitalisation."
+      ]
+    },
+    {
+      "name": "ByteMinds Society",
+      "position": "Joint Secretary",
+      "url": "https://dypvp.edu.in",
+      "startDate": "2026-09-01",
+      "summary": "Coordinate technical activities, workshops, coding events, and society administration; support member coordination and coding education for underprivileged students.",
+      "highlights": [
+        "Coordinate technical activities, workshops, and coding competitions.",
+        "Support member coordination and coding education for underprivileged students."
+      ]
+    },
+    {
+      "name": "ZION, DYPIT",
+      "position": "Technical Team Member & Event Lead",
+      "url": "https://ziondit.online",
+      "startDate": "2026-01-01",
+      "endDate": "2026-05-31",
+      "summary": "Contributed to the ZION event website (ziondit.online); worked on technical event activities and led a technology-based treasure hunt.",
+      "highlights": [
+        "Contributed to development and deployment of the ZION event website.",
+        "Led event activities including designing and managing a technology-based treasure hunt."
+      ]
+    },
+    {
+      "name": "Edusmile",
+      "position": "Part-Time Mathematics & Programming Instructor",
+      "url": "https://dypvp.edu.in",
+      "startDate": "2025-10-01",
+      "summary": "Taught Python and C to Classes 8–12 in group-based open-course sessions, and academic mathematics through Grade 12 (algebra, trigonometry, coordinate geometry, statistics, probability) to 16 students.",
+      "highlights": [
+        "Teach Python and C in group-based open-course sessions.",
+        "Instruct academic mathematics through Grade 12 covering algebra, trigonometry, coordinate geometry, statistics, and probability."
+      ]
+    },
+    {
+      "name": "Sarthasangati Foundation",
+      "position": "Web Development Contributor",
+      "url": "https://dypvp.edu.in",
+      "startDate": "2025-06-01",
+      "endDate": "2025-08-31",
+      "summary": "Developed a website for the foundation and assisted with technical aspects of web development and website requirements.",
+      "highlights": [
+        "Developed and published website for the foundation.",
+        "Assisted with technical aspects of web development and requirements gathering."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Dr. D. Y. Patil Institute of Technology, Pimpri, Pune",
+      "url": "https://dypvp.edu.in",
+      "area": "B.Tech in Artificial Intelligence & Data Science",
+      "endDate": "2029",
+      "courses": [
+        "AIDS 201 - Linear Algebra",
+        "AIDS 202 - Calculus",
+        "AIDS 203 - Data Structures & Algorithms",
+        "AIDS 204 - Digital Electronics & Computer Organization",
+        "AIDS 205 - Operating Systems",
+        "AIDS 206 - Fundamentals of AI & ML"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Data Analysis",
+      "keywords": [
+        "Jupyter Notebook",
+        "Matplotlib",
+        "Seaborn"
+      ]
+    },
+    {
+      "name": "Databases",
+      "keywords": [
+        "MongoDB",
+        "MySQL",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Languages",
+      "keywords": [
+        "C",
+        "JavaScript",
+        "Python",
+        "C++",
+        "Java",
+        "Rust"
+      ]
+    },
+    {
+      "name": "ML Engineering",
+      "keywords": [
+        "NumPy",
+        "Pandas",
+        "Keras",
+        "OpenCV",
+        "PyTorch",
+        "Scikit-learn",
+        "SciPy",
+        "TensorFlow"
+      ]
+    },
+    {
+      "name": "Tools",
+      "keywords": [
+        "Git",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Web Development",
+      "keywords": [
+        "Express",
+        "FastAPI",
+        "Node.js",
+        "React",
+        "Django"
+      ]
+    }
+  ],
+  "meta": {
+    "canonical": "https://itsthemaverick.github.io/resume.json"
+  }
+}
