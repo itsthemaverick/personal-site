@@ -19,13 +19,13 @@ I currently work as a Software Development Engineer & Machine Learning Engineer 
 # Some history
 
 - In 2018, I wrote my first lines of code and began exploring programming and computing.
+- In 2019, Made my first deployment on Herkouapp , It was a Twitter Clone, Made for my School Gossips. 
 - In 2024, I started my B.Tech in Artificial Intelligence & Data Science at Dr. D. Y. Patil Institute of Technology in Pune.
 - In 2025, I began teaching mathematics and programming (Python and C) to students through Edusmile, teaching over 16 students.
 - In 2026, I built a neural network from scratch in pure C to explore forward propagation and learning without high-level frameworks.
 - In 2026, our team won 1st Place at the EDSI Idea Validation Pitch for 8Minutes, an AI-powered mental wellness companion.
 - In 2026, our team achieved 4th Place at the EVΛH Decentra Hackathon with a privacy-focused portable digital environment powered by local AI.
 - In 2026, I qualified at the institutional level for the Smart India Hackathon with an AI agricultural marketplace connecting farmers and wholesalers.
-- In 2026, I co-filed a patent application for proof-based task validation in collaborative environments with Prof. Prajakta P. Pawar.
 
 # I like
 
@@ -36,9 +36,10 @@ I currently work as a Software Development Engineer & Machine Learning Engineer 
 - Open-source software and collaborative development.
 - AI for cybersecurity and anomaly detection.
 
-# Travel / geography
+# Travel / Geography
 
 - I am based in Pune, Maharashtra, India.
+- I love Travelling, I've been to Multiple Indian States Including Rajasthan, Gujrat ,Madhya Pradesh, Kerla, Karnatka, Goa.
 - I study at Dr. D. Y. Patil Institute of Technology in Pimpri, Pune (SPPU).
 
 # Fun facts
