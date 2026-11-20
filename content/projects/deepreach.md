@@ -1,7 +1,7 @@
 ---
 title: "Deepreach-Engine"
 subtitle: "DevKraft"
-link: "[Github](https://github.com/itsthemaverick/Deepreach-Engine)"
+link: "https://github.com/itsthemaverick/Deepreach-Engine"
 sourceWork: "DevKraft"
 date: "2026-09-01"
 endDate: "2026-11-01"
