@@ -13,7 +13,7 @@ work:
       - "Served as Project Lead, coordinating a 10-member team across engineering tasks."
   - name: "DevKraft"
     position: "Research Intern"
-    url: "https://devkraft.in"
+    url: "https://github.com/itsthemaverick/Deepreach-Engine"
     startDate: "2026-09-01"
     endDate: "2026-11-01"
     summary: "Contributed to Deepreach, a web-based company discovery and research workflow for identifying potential event sponsors. Worked on agentic AI workflows, prompt design, and guardrails for structured company discovery."
