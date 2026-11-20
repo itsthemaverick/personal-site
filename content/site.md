@@ -9,7 +9,7 @@ computingSince: 2018
 countriesVisited: 1
 currentCity: "Pune"
 email: "yashrajbhogadepatil@gmail.com"
-siteUrl: "https://itsthemaverick.github.io"
+siteUrl: "https://maverick.is-cool.dev"
 sourceRepository: "itsthemaverick/personal-site"
 githubUsername: "itsthemaverick"
 siteTitle: "Yashraj Bhogade"
