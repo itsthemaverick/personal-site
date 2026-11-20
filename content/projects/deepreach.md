@@ -1,15 +1,16 @@
 ---
-title: "Deepreach"
+title: "Deepreach-Engine"
 subtitle: "DevKraft"
-link: "https://devkraft.in"
+link: "[Github](https://github.com/itsthemaverick/Deepreach-Engine)"
 sourceWork: "DevKraft"
 date: "2026-09-01"
 endDate: "2026-11-01"
 tech:
   - "Python"
-  - "Agentic AI"
-  - "Prompt Design"
+  - "React"
+  - "FastAPI"
+  - "SearXNG"
 status: "shipped"
 ---
 
-Web-based company discovery and research workflow for identifying potential event sponsors using agentic AI workflows, prompt design, and guardrails.
+Deterministic corporate discovery pipeline & UI. Crawls 9 public sources with multi-pass fuzzy deduplication, SSE streaming, and zero hallucination.
