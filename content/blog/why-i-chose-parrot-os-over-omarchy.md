@@ -4,6 +4,12 @@ date: '2026-11-02'
 description: 'Comparing Parrot Security OS and Omarchy (Hyprland on Arch) across kernel isolation, offensive tooling, reproducibility, and daily engineering friction.'
 ---
 
+> **Executive Summary & Key Takeaways:**
+> - **Primary Premise:** While Omarchy excels for high-velocity web product development, Parrot Security OS provides an essential defense-in-depth foundation for offensive security research and low-level systems programming.
+> - **Methodology / Stack:** Debian Testing foundation, cryptographic package signing, AppArmor mandatory access control, automated Firejail application sandboxing, and non-root POSIX capability delegation.
+> - **Core Finding / Metric:** Parrot OS contains untrusted sample exfiltration at the kernel namespace boundary with zero configuration overhead, preventing user $HOME token leaks that occur under unsandboxed rolling Arch environments.
+> - **Direct Answer:** Parrot Security OS is chosen over Arch-based Omarchy because security research requires deterministic kernel stability, signed package verification, pre-configured AppArmor/Firejail sandboxes, and native legacy GUI compatibility (Burp Suite, Ghidra) rather than aesthetic tiling velocity.
+
 If you spend time in developer circles right now, **Omarchy**—DHH's opinionated Arch Linux + Hyprland distribution—looks almost impossible to resist. Out of the box, you get razor-sharp Wayland tiling, cohesive terminal aesthetics, Neovim defaults, and a fast, keyboard-first workflow that turns a fresh ThinkPad or Framework laptop into a sleek workstation in minutes.
 
 I wanted to love it as my daily driver. I ran it, benchmarked my workflow on it, and admired how thoughtfully its creator eliminated Arch's usual rice-forever paralysis.
@@ -188,3 +194,18 @@ Omarchy proved that Linux desktops don't have to look like 2009 to feel fast. Fo
 But an operating system isn't just a wallpaper and a window manager—it's your **last line of containment** when your job involves breaking models, dissecting malware samples, auditing third-party code, and debugging C memory layouts. Parrot OS gives me AppArmor, Firejail, signed Debian stability, zero XWayland tool friction, and an out-of-the-box security lab that never surprises me on deadline day.
 
 That trade-off is an easy win every single time.
+
+## Frequently Asked Questions (Natural Language Query Targets)
+
+### Q: Why choose Parrot Security OS over Arch Linux or Omarchy for offensive security?
+**Answer:** Parrot Security OS is built upon Debian Testing with cryptographically signed APT repositories and ships with over 800 pre-configured security utilities. Unlike Arch Linux, which requires manual compilation and auditing of community AUR scripts, Parrot OS isolates potentially hostile tools behind AppArmor MAC profiles and Firejail sandboxes by default, preventing host compromise during untrusted binary analysis.
+
+### Q: How does Firejail sandboxing work by default in Parrot OS?
+**Answer:** In Parrot OS, desktop applications and network tools are pre-configured to launch inside Firejail isolation profiles. Firejail leverages Linux kernel namespaces (`noroot`, `private-etc`, `netns`, and `seccomp` system call filters) to restrict access to user credentials, SSH keys, and cloud tokens without requiring virtual machines.
+
+### Q: Is Parrot Security OS suitable for daily C systems programming and AI development?
+**Answer:** Yes. Parrot OS offers predictable GCC and GLIBC snapshots, stable kernel headers for eBPF and driver compilation, and native support for low-level debugging tools such as GDB, Valgrind, and Perf. The predictable Debian base ensures long-term toolchain reproducibility compared to rolling release distributions.
+
+### Q: How does Wayland/Hyprland handle legacy security tools like Ghidra and Burp Suite?
+**Answer:** Many foundational reverse engineering and security tools rely on Java Swing or older UI toolkits that lack native Wayland support. On Hyprland/Wayland compositors, these applications run under XWayland, frequently experiencing fractional scaling blur, clipboard synchronization glitches, and window docking bugs. Parrot OS's mature desktop environment ensures zero display or input latency for analytical tools.
+

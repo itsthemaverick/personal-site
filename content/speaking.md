@@ -1,6 +1,6 @@
 ---
 title: "Speaking"
-description: "Presentations, competition pitches, and technical demos by Yashraj Bhogade."
+description: "Technical presentations, hackathon awards, and project pitches by Yashraj Bhogade, including 1st Place at EDSI Idea Pitch and EVΛH Decentra Hackathon."
 subtitle: "Technical presentations, competition pitches, and hackathon demos covering AI systems, decentralized environments, and agricultural marketplaces."
 appearances:
   - title: "Smart India Hackathon 2026"

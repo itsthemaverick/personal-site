@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://itsthemaverick.github.io/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://itsthemaverick.github.io/about/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://itsthemaverick.github.io/resume/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://itsthemaverick.github.io/projects/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://itsthemaverick.github.io/writing/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://itsthemaverick.github.io/speaking/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://itsthemaverick.github.io/stats/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://itsthemaverick.github.io/contact/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://itsthemaverick.github.io/writing/prompt-injection-breaking-the-trust-boundary/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://itsthemaverick.github.io/writing/ai-red-teaming-systematic-adversarial-testing/</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://itsthemaverick.github.io/writing/why-i-chose-parrot-os-over-omarchy/</loc><lastmod>2026-11-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://itsthemaverick.github.io/writing/building-a-neural-network-from-scratch-in-c/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://maverick.is-cool.dev/</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://maverick.is-cool.dev/about/</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://maverick.is-cool.dev/resume/</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://maverick.is-cool.dev/projects/</loc><lastmod>2026-11-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://maverick.is-cool.dev/writing/</loc><lastmod>2026-11-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://maverick.is-cool.dev/speaking/</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://maverick.is-cool.dev/stats/</loc><lastmod>2026-11-23</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://maverick.is-cool.dev/contact/</loc><lastmod>2026-11-23</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://maverick.is-cool.dev/writing/prompt-injection-breaking-the-trust-boundary/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://maverick.is-cool.dev/writing/ai-red-teaming-systematic-adversarial-testing/</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://maverick.is-cool.dev/writing/why-i-chose-parrot-os-over-omarchy/</loc><lastmod>2026-11-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://maverick.is-cool.dev/writing/building-a-neural-network-from-scratch-in-c/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

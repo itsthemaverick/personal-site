@@ -1,6 +1,6 @@
 ---
 title: "Resume"
-description: "Yashraj Bhogade's Resume. Dr. D. Y. Patil Institute of Technology, SprougHub Foundation, DevKraft, ByteMinds Society."
+description: "Technical resume of Yashraj Bhogade: AI & ML engineering experience at SprougHub and DevKraft, B.Tech in AI & Data Science, publications, and skills."
 summary: "AI & Machine Learning Engineer and B.Tech student in Artificial Intelligence & Data Science at Dr. D. Y. Patil Institute of Technology, Pimpri, Pune. Experienced in ML development, agentic workflows, and C systems programming. SDE & ML Engineer Intern at SprougHub Foundation, Research Intern at DevKraft, and co-inventor of a proof-based task validation patent."
 work:
   - name: "SprougHub Foundation"

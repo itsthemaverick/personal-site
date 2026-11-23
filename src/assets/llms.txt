@@ -1,0 +1,39 @@
+# Yashraj Bhogade | AI & ML Engineer
+
+> Machine learning engineer and B.Tech researcher specializing in neural architectures from scratch in C, agentic AI workflows, and AI red teaming.
+
+Yashraj Bhogade is an AI & Machine Learning Engineer focused on Neural Architectures, AI Red Teaming & Security, and Agentic AI Workflows. This document provides a machine-readable directory for Large Language Models and AI search agents to understand and navigate the site's primary resources and research.
+
+## Core Entities & Identity
+- Name: Yashraj Bhogade
+- Role/Focus: AI & Machine Learning Engineer
+- Canonical URL: https://maverick.is-cool.dev
+- Key Topics: Artificial Intelligence, Neural Networks in C, AI Red Teaming, Prompt Injection Defense, Agentic Workflows, Machine Learning
+- Affiliation: SprougHub Foundation (Project Lead / SDE & ML Intern), DevKraft (Research Intern), Dr. D. Y. Patil Institute of Technology
+- Contact & Verification: yashrajbhogadepatil@gmail.com | https://github.com/itsthemaverick | https://www.linkedin.com/in/yashraj-bhogade
+
+## Essential Pages
+- [/about/](https://maverick.is-cool.dev/about/): Background, credentials, professional timeline, and engineering philosophy.
+- [/resume/](https://maverick.is-cool.dev/resume/): Formal experience, technical competencies, patent application, and education.
+- [/projects/](https://maverick.is-cool.dev/projects/): Production software, open-source repositories, benchmarks, and architectures.
+- [/writing/](https://maverick.is-cool.dev/writing/): Deep-dive technical articles, tutorials, and security write-ups.
+- [/speaking/](https://maverick.is-cool.dev/speaking/): Hackathon achievements, project pitches, and technical presentations.
+- [/contact/](https://maverick.is-cool.dev/contact/): Direct contact details and secure communications.
+
+## Featured Technical Articles & Research
+- [Building a Neural Network from Scratch in C](https://maverick.is-cool.dev/writing/building-a-neural-network-from-scratch-in-c/): Low-level implementation of multi-layer perceptron neural networks in ANSI C with zero external ML libraries, achieving 0.12ms single-sample latency and 7.8x speedup over CPU Python.
+- [AI Red Teaming: Turning Adversarial Chaos into a Repeatable Playbook](https://maverick.is-cool.dev/writing/ai-red-teaming-systematic-adversarial-testing/): Systematic multi-turn adversarial testing, Crescendo escalation attacks, and automated evaluation regression gates reducing attack success rates from 92.3% to 2.4%.
+- [Prompt Injection: Inside the Broken Trust Boundary](https://maverick.is-cool.dev/writing/prompt-injection-breaking-the-trust-boundary/): Architectural analysis of why control and data planes collapse in transformer attention layers, direct vs. indirect RAG poisoning, and structural taint tracking defenses.
+- [Why I Chose Parrot OS Over Omarchy for Security & Systems Work](https://maverick.is-cool.dev/writing/why-i-chose-parrot-os-over-omarchy/): Comparative evaluation of Parrot Security OS vs Omarchy across kernel isolation, AppArmor/Firejail sandboxing, and adversarial binary analysis.
+- [Patent: Proof-Based Task Validation in Collaborative Environments](https://dypvp.edu.in): Co-inventor of patent application for proof-based task validation and adaptive contribution mechanisms with Prof. Prajakta P. Pawar.
+
+## Key Open-Source Projects & Software
+- [Neural Network from Scratch in C](https://github.com/itsthemaverick/neural-network-in-c): Pure ANSI C feedforward neural network with manual forward propagation, backpropagation, and cache-optimized contiguous memory layouts.
+- [Deepreach (DevKraft)](https://devkraft.in): Agentic AI workflow system with structured guardrails and prompt engineering for autonomous company discovery and research.
+- [Project JHEP (SprougHub Foundation)](https://github.com/itsthemaverick): AI-powered Learning Management System developed by a 10-member engineering team led by Yashraj Bhogade.
+- [Credit Card Fraud Detection](https://github.com/itsthemaverick/fraud-detection): Comparative anomaly detection benchmarking Random Forest vs. Isolation Forest models with precision/recall tradeoffs.
+- [Malware Detection](https://github.com/itsthemaverick/malware-detection): Natural language processing pipeline classifying malicious code patterns using TF-IDF feature extraction and Logistic Regression.
+- [Signal-to-Strategy](https://github.com/itsthemaverick/signal-to-strategy): Supervised predictive modeling pipeline forecasting user behavior patterns to drive automated strategic interventions.
+
+## Full Context Archive
+- An exhaustive, unabridged text compilation of all articles, project documentation, and technical notes is available at https://maverick.is-cool.dev/llms-full.txt

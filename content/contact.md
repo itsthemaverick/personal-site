@@ -1,6 +1,6 @@
 ---
 title: "Contact"
 heading: "Get in touch"
-description: "Contact Yashraj Bhogade via email at yashrajbhogadepatil@gmail.com."
+description: "Get in touch with Yashraj Bhogade for AI & ML engineering collaborations, research opportunities, or technical inquiries. Email and social profiles."
 hint: "I usually respond within 24 hours. For speaking invitations, email is best."
 ---

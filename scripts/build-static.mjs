@@ -1506,7 +1506,7 @@ function buildSiteSchemaNodes(site, resume) {
     url: `${siteUrl}/images/me.jpg`,
     width: 640,
     height: 640,
-    caption: site.name,
+    caption: `${site.name} — AI & Machine Learning Engineer`,
   });
 
   return [
@@ -1514,8 +1514,8 @@ function buildSiteSchemaNodes(site, resume) {
       '@type': 'WebSite',
       '@id': websiteId,
       url: homeUrl,
-      name: site.name,
-      alternateName: ['itsthemaverick.github.io', 'itsthemaverick'],
+      name: `${site.name} | AI & ML Engineer`,
+      alternateName: ['itsthemaverick.github.io', 'itsthemaverick', site.name],
       description: site.siteDescription,
       inLanguage: 'en-US',
       publisher: { '@id': personId },
@@ -1530,9 +1530,24 @@ function buildSiteSchemaNodes(site, resume) {
       url: homeUrl,
       image: portrait('person-image'),
       description: site.siteDescription,
-      ...(current ? { jobTitle: current.position } : {}),
+      jobTitle: current ? current.position : 'AI & Machine Learning Engineer',
       email: site.email,
-      sameAs: socialLinks,
+      sameAs: [
+        ...socialLinks,
+        'https://github.com/itsthemaverick',
+        'https://www.linkedin.com/in/yashraj-bhogade',
+      ].filter((v, i, a) => a.indexOf(v) === i),
+      knowsAbout: [
+        'Artificial Intelligence',
+        'Machine Learning',
+        'Neural Network Architecture',
+        'Forward Propagation and Backpropagation in C',
+        'AI Red Teaming & Adversarial Robustness',
+        'Prompt Injection Defense',
+        'Agentic AI Workflows',
+        'Systems Programming in C',
+        'Computer Security',
+      ],
       ...(current
         ? {
             worksFor: {
@@ -1585,7 +1600,8 @@ function renderContactIcons(site, { includeEmail = true, labelled = false } = {}
 function renderPortrait(site, depth, width, height, priority = false) {
   const loading = priority ? 'eager' : 'lazy';
   const fetchPrio = priority ? ' fetchpriority="high"' : '';
-  return `<span class="portrait"><img src="${escapeHtml(hrefFor(depth, '/images/me.jpg'))}" alt="${escapeHtml(site.name)}" width="${width}" height="${height}" loading="${loading}"${fetchPrio} decoding="async"></span>`;
+  const altText = `${site.name}, AI & Machine Learning Engineer and B.Tech student in Pune`;
+  return `<span class="portrait"><img src="${escapeHtml(hrefFor(depth, '/images/me.jpg'))}" alt="${escapeHtml(altText)}" width="${width}" height="${height}" loading="${loading}"${fetchPrio} decoding="async"></span>`;
 }
 
 function renderHeaderAndMenu(site, currentPath, depth) {
@@ -1699,7 +1715,9 @@ function renderDocument({
   mainTagOverride = null,
 }) {
   const siteUrl = String(site.siteUrl || 'https://itsthemaverick.github.io').replace(/\/$/, '');
-  const fullTitle = title ? `${title} | ${site.name}` : site.name;
+  const fullTitle = title
+    ? (title.includes(site.name) ? title : `${title} | ${site.name}`)
+    : `${site.name} | AI & ML Engineer`;
   const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : null;
   const shareImg = ogImageUrl || `${siteUrl}/og.png`;
 
@@ -1713,6 +1731,8 @@ function renderDocument({
     `<link rel="apple-touch-icon" href="${escapeHtml(hrefFor(depth, '/apple-icon.png'))}">`,
     `<link rel="manifest" href="${escapeHtml(hrefFor(depth, '/manifest.json'))}">`,
     canonicalUrl ? `<link rel="canonical" href="${escapeHtml(canonicalUrl)}">` : '',
+    `<link rel="alternate" type="text/markdown" title="LLM Context" href="${escapeHtml(siteUrl)}/llms.txt">`,
+    `<link rel="alternate" type="text/markdown" title="Full LLM Context Archive" href="${escapeHtml(siteUrl)}/llms-full.txt">`,
     alternateRss ? `<link rel="alternate" type="application/rss+xml" title="RSS" href="${escapeHtml(siteUrl)}/feed.xml">` : '',
     alternateJson ? `<link rel="alternate" type="application/json" href="${escapeHtml(siteUrl)}/resume.json">` : '',
   ]
@@ -1749,10 +1769,14 @@ function renderDocument({
   <meta property="og:title" content="${escapeHtml(fullTitle)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:image" content="${escapeHtml(shareImg)}">
+  <meta property="og:image:alt" content="${escapeHtml(fullTitle)}">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   ${publishedTime ? `<meta property="article:published_time" content="${escapeHtml(publishedTime)}">` : ''}
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@itsthemaverick">
+  <meta name="twitter:creator" content="@itsthemaverick">
   <meta name="twitter:title" content="${escapeHtml(fullTitle)}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${escapeHtml(shareImg)}">
@@ -1825,7 +1849,7 @@ function buildHomePage(site, allBlogItems) {
       '@type': 'ProfilePage',
       '@id': `${siteUrl}/#webpage`,
       url: `${siteUrl}/`,
-      name: site.name,
+      name: `${site.name} | AI & ML Engineer`,
       isPartOf: { '@id': `${siteUrl}/#website` },
       inLanguage: 'en-US',
       mainEntity: { '@id': `${siteUrl}/#person` },
@@ -1833,7 +1857,7 @@ function buildHomePage(site, allBlogItems) {
   ];
 
   return {
-    title: null,
+    title: 'AI & ML Engineer - Neural Systems',
     description: site.siteDescription,
     canonicalPath: '/',
     currentPath: '/',
@@ -1923,7 +1947,7 @@ function buildAboutPage(site, aboutDoc) {
   ];
 
   return {
-    title: 'About',
+    title: 'About - AI & Systems Architecture',
     description: aboutDoc.data.description,
     canonicalPath: '/about/',
     currentPath: '/about/',
@@ -2120,13 +2144,37 @@ function buildResumePage(site, resume) {
   </div>
 </section>`;
 
+  const resumeUrl = `${siteUrl}/resume/`;
+  const pageNodes = [
+    {
+      '@type': 'ProfilePage',
+      '@id': `${resumeUrl}#profilepage`,
+      url: resumeUrl,
+      name: `Resume — ${site.name}`,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      inLanguage: 'en-US',
+      description: resume.description,
+      breadcrumb: { '@id': `${resumeUrl}#breadcrumb` },
+      mainEntity: { '@id': `${siteUrl}/#person` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${resumeUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+        { '@type': 'ListItem', position: 2, name: 'Resume', item: resumeUrl },
+      ],
+    },
+  ];
+
   return {
-    title: 'Resume',
+    title: 'Resume - Experience & Education',
     description: resume.description,
     canonicalPath: '/resume/',
     currentPath: '/resume/',
     depth: 1,
     alternateJson: true,
+    pageSchemaNodes: pageNodes,
     mainHtml,
   };
 }
@@ -2164,6 +2212,20 @@ function buildProjectsPage(site, projects, initialPayload) {
     .join('');
 
   const pageUrl = `${siteUrl}/projects/`;
+  const softwareNodes = projects.map((p) => {
+    const slug = (p.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    return {
+      '@type': 'SoftwareSourceCode',
+      '@id': `${siteUrl}/projects/#${slug}`,
+      name: p.title,
+      description: p.subtitle || p.title,
+      author: { '@id': `${siteUrl}/#person` },
+      ...(p.link ? { url: p.link } : {}),
+      ...(p.sourceRepository ? { codeRepository: p.sourceRepository } : {}),
+      ...(p.tech && p.tech.length > 0 ? { programmingLanguage: p.tech[0] } : {}),
+    };
+  });
+
   const pageNodes = [
     {
       '@type': 'CollectionPage',
@@ -2175,7 +2237,9 @@ function buildProjectsPage(site, projects, initialPayload) {
       description: desc,
       breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
       about: { '@id': `${siteUrl}/#person` },
+      hasPart: softwareNodes.map((s) => ({ '@id': s['@id'] })),
     },
+    ...softwareNodes,
     {
       '@type': 'BreadcrumbList',
       '@id': `${pageUrl}#breadcrumb`,
@@ -2204,8 +2268,8 @@ function buildProjectsPage(site, projects, initialPayload) {
 </div>`;
 
   return {
-    title: pageTitle,
-    description: desc,
+    title: 'AI & ML Projects - Code & Systems',
+    description: 'Explore open-source AI software and machine learning projects by Yashraj Bhogade, including neural networks in C, agentic systems, and security tools.',
     canonicalPath: '/projects/',
     currentPath: '/projects/',
     depth: 1,
@@ -2282,8 +2346,8 @@ function buildBlogIndexPage(site, allItems) {
   ];
 
   return {
-    title: 'Blog',
-    description: writingDesc,
+    title: 'Technical Blog & AI Deep Dives',
+    description: 'In-depth technical articles on neural networks in C, AI red teaming, prompt injection defenses, and secure Linux environments by Yashraj Bhogade.',
     canonicalPath: '/writing/',
     currentPath: '/writing/',
     depth: 1,
@@ -2299,12 +2363,64 @@ function buildBlogIndexPage(site, allItems) {
   };
 }
 
+const ARTICLE_SEO_MAP = {
+  'building-a-neural-network-from-scratch-in-c': {
+    shortTitle: 'Neural Network from Scratch in C',
+    section: 'Machine Learning & Systems Programming',
+    keywords: ['Neural Networks in C', 'Forward Propagation', 'Backpropagation', 'C99', 'Matrix Multiplication', 'Stochastic Gradient Descent', 'Cache Locality'],
+    about: [
+      { '@type': 'Thing', name: 'Artificial neural network', sameAs: 'https://en.wikipedia.org/wiki/Artificial_neural_network' },
+      { '@type': 'Thing', name: 'C (programming language)', sameAs: 'https://en.wikipedia.org/wiki/C_(programming_language)' },
+      { '@type': 'Thing', name: 'Backpropagation', sameAs: 'https://en.wikipedia.org/wiki/Backpropagation' },
+    ],
+  },
+  'ai-red-teaming-systematic-adversarial-testing': {
+    shortTitle: 'AI Red Teaming Playbook & Testing',
+    section: 'AI Security & Red Teaming',
+    keywords: ['AI Red Teaming', 'Adversarial Machine Learning', 'Crescendo Attack', 'Prompt Injection', 'OWASP Top 10 for LLMs', 'Automated Evaluation Harness'],
+    about: [
+      { '@type': 'Thing', name: 'Adversarial machine learning', sameAs: 'https://en.wikipedia.org/wiki/Adversarial_machine_learning' },
+      { '@type': 'Thing', name: 'Red team', sameAs: 'https://en.wikipedia.org/wiki/Red_team' },
+      { '@type': 'Thing', name: 'Large language model', sameAs: 'https://en.wikipedia.org/wiki/Large_language_model' },
+    ],
+  },
+  'prompt-injection-breaking-the-trust-boundary': {
+    shortTitle: 'Prompt Injection Defense & RAG',
+    section: 'AI Security & Adversarial Testing',
+    keywords: ['Prompt Injection', 'Indirect Prompt Injection', 'RAG Poisoning', 'Transformer Attention', 'Taint Tracking', 'LLM Guardrails'],
+    about: [
+      { '@type': 'Thing', name: 'Prompt injection', sameAs: 'https://en.wikipedia.org/wiki/Prompt_engineering#Prompt_injection' },
+      { '@type': 'Thing', name: 'Retrieval-augmented generation', sameAs: 'https://en.wikipedia.org/wiki/Retrieval-augmented_generation' },
+      { '@type': 'Thing', name: 'Computer security', sameAs: 'https://en.wikipedia.org/wiki/Computer_security' },
+    ],
+  },
+  'why-i-chose-parrot-os-over-omarchy': {
+    shortTitle: 'Parrot OS vs Omarchy for Security',
+    section: 'Operating Systems & Security',
+    keywords: ['Parrot Security OS', 'Omarchy', 'Linux Security', 'AppArmor', 'Firejail', 'Debian Testing', 'Systems Programming'],
+    about: [
+      { '@type': 'Thing', name: 'Parrot OS', sameAs: 'https://en.wikipedia.org/wiki/Parrot_OS' },
+      { '@type': 'Thing', name: 'Arch Linux', sameAs: 'https://en.wikipedia.org/wiki/Arch_Linux' },
+      { '@type': 'Thing', name: 'AppArmor', sameAs: 'https://en.wikipedia.org/wiki/AppArmor' },
+    ],
+  },
+};
+
 function buildBlogPostPage(site, post, localPosts, idx) {
   const siteUrl = String(site.siteUrl).replace(/\/$/, '');
   const postUrl = `${siteUrl}/writing/${post.slug}/`;
   const shareImgUrl = fs.existsSync(path.join(ASSETS_DIR, 'og', 'writing', `${post.slug}.png`))
     ? `${siteUrl}/og/writing/${post.slug}.png`
     : `${siteUrl}/og.png`;
+
+  const metaConfig = ARTICLE_SEO_MAP[post.slug] || {
+    shortTitle: post.title,
+    section: 'Artificial Intelligence',
+    keywords: ['Artificial Intelligence', 'Machine Learning', 'Software Engineering'],
+    about: [{ '@type': 'Thing', name: 'Artificial intelligence', sameAs: 'https://en.wikipedia.org/wiki/Artificial_intelligence' }],
+  };
+
+  const isoPublished = `${post.date}T00:00:00+05:30`;
 
   // localPosts is newest-first
   const newer = idx > 0 ? localPosts[idx - 1] : null;
@@ -2330,21 +2446,24 @@ function buildBlogPostPage(site, post, localPosts, idx) {
       breadcrumb: { '@id': `${postUrl}#breadcrumb` },
     },
     {
-      '@type': 'BlogPosting',
-      '@id': `${postUrl}#blogposting`,
+      '@type': ['TechArticle', 'BlogPosting'],
+      '@id': `${postUrl}#article`,
       url: postUrl,
       mainEntityOfPage: { '@id': `${postUrl}#webpage` },
       isPartOf: { '@id': `${siteUrl}/writing/#blog` },
       headline: post.title,
       description: post.description,
       inLanguage: 'en-US',
-      datePublished: post.date,
-      dateModified: post.date,
+      datePublished: isoPublished,
+      dateModified: isoPublished,
       author: { '@id': `${siteUrl}/#person` },
       publisher: { '@id': `${siteUrl}/#person` },
+      articleSection: metaConfig.section,
+      keywords: metaConfig.keywords,
+      about: metaConfig.about,
       image: {
         '@type': 'ImageObject',
-        '@id': `${postUrl}#blogposting-image`,
+        '@id': `${postUrl}#article-image`,
         url: shareImgUrl,
         width: 1200,
         height: 630,
@@ -2365,7 +2484,7 @@ function buildBlogPostPage(site, post, localPosts, idx) {
   const renderedBody = renderMarkdown(post.content, { depth: 2 });
 
   return {
-    title: post.title,
+    title: metaConfig.shortTitle || post.title,
     description: post.description,
     canonicalPath: `/writing/${post.slug}/`,
     currentPath: `/writing/${post.slug}/`,
@@ -2436,7 +2555,7 @@ function buildSpeakingPage(site, speaking) {
   const collabHtml = renderInlineMarkdown(speaking.collaborationText || '', { depth: 1 });
 
   return {
-    title: 'Speaking',
+    title: 'Speaking, Hackathons & Tech Demos',
     description: speaking.description,
     canonicalPath: '/speaking/',
     currentPath: '/speaking/',
@@ -2460,6 +2579,8 @@ function buildSpeakingPage(site, speaking) {
 }
 
 function buildStatsPage(site, repoCounts, lineCount) {
+  const siteUrl = String(site.siteUrl).replace(/\/$/, '');
+  const statsUrl = `${siteUrl}/stats/`;
   const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365.2421897;
   const nowMs = Date.now();
   const birthMs = Date.parse(site.birthDate);
@@ -2515,12 +2636,35 @@ function buildStatsPage(site, repoCounts, lineCount) {
     { label: 'Number of spoons', valueHtml: '0' },
   ];
 
+  const pageNodes = [
+    {
+      '@type': 'WebPage',
+      '@id': `${statsUrl}#webpage`,
+      url: statsUrl,
+      name: 'Stats',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      inLanguage: 'en-US',
+      description: `Live codebase metrics, repository counts, and static architecture statistics for ${site.name}'s portfolio and open-source projects.`,
+      breadcrumb: { '@id': `${statsUrl}#breadcrumb` },
+      about: { '@id': `${siteUrl}/#person` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${statsUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+        { '@type': 'ListItem', position: 2, name: 'Stats', item: statsUrl },
+      ],
+    },
+  ];
+
   return {
-    title: 'Stats',
-    description: `Some statistics about ${site.name} and this site`,
+    title: 'Codebase & Architecture Statistics',
+    description: `Live codebase metrics, repository counts, and static architecture statistics for ${site.name}'s portfolio and open-source projects.`,
     canonicalPath: '/stats/',
     currentPath: '/stats/',
     depth: 1,
+    pageSchemaNodes: pageNodes,
     mainHtml: `<section class="stats-page">
   <header class="stats-header">
     <h1 class="page-title">Stats</h1>
@@ -2541,6 +2685,8 @@ function buildStatsPage(site, repoCounts, lineCount) {
 }
 
 function buildContactPage(site, contact) {
+  const siteUrl = String(site.siteUrl).replace(/\/$/, '');
+  const contactUrl = `${siteUrl}/contact/`;
   const email = String(site.email);
   const [localPart, domain] = email.split('@');
   const domainParts = domain
@@ -2548,13 +2694,36 @@ function buildContactPage(site, contact) {
     .map((part, idx) => (idx > 0 ? `<wbr>.${escapeHtml(part)}` : escapeHtml(part)))
     .join('');
 
+  const pageNodes = [
+    {
+      '@type': 'ContactPage',
+      '@id': `${contactUrl}#contactpage`,
+      url: contactUrl,
+      name: 'Contact',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      inLanguage: 'en-US',
+      description: contact.description || `Get in touch with ${site.name} for AI & ML engineering collaborations, research opportunities, or technical inquiries.`,
+      breadcrumb: { '@id': `${contactUrl}#breadcrumb` },
+      mainEntity: { '@id': `${siteUrl}/#person` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${contactUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+        { '@type': 'ListItem', position: 2, name: 'Contact', item: contactUrl },
+      ],
+    },
+  ];
+
   return {
-    title: 'Contact',
-    description: contact.description || `Contact ${site.name} via email at ${email}.`,
+    title: 'Contact - Engineering Collaboration',
+    description: contact.description || `Get in touch with ${site.name} for AI & ML engineering collaborations, research opportunities, or technical inquiries.`,
     canonicalPath: '/contact/',
     currentPath: '/contact/',
     depth: 1,
     hideFooter: true,
+    pageSchemaNodes: pageNodes,
     mainHtml: `<section class="contact-page">
   <h1 class="page-title">${escapeHtml(contact.heading || 'Get in touch')}</h1>
   <div class="contact-email-container" data-email-typer data-local-part="${escapeHtml(localPart)}">
@@ -2715,20 +2884,24 @@ function buildSitemapXml(site, localPosts) {
   const siteUrl = String(site.siteUrl).replace(/\/$/, '');
   const hints = {
     '/': { changefreq: 'monthly', priority: '1.0' },
-    '/writing/': { changefreq: 'weekly', priority: '0.8' },
+    '/about/': { changefreq: 'monthly', priority: '0.8' },
+    '/resume/': { changefreq: 'monthly', priority: '0.8' },
+    '/projects/': { changefreq: 'weekly', priority: '0.9' },
+    '/writing/': { changefreq: 'weekly', priority: '0.9' },
     '/speaking/': { changefreq: 'monthly', priority: '0.7' },
     '/stats/': { changefreq: 'weekly', priority: '0.5' },
-    '/contact/': { changefreq: 'yearly', priority: '0.5' },
+    '/contact/': { changefreq: 'yearly', priority: '0.6' },
   };
   const routePaths = ['/', '/about/', '/resume/', '/projects/', '/writing/', '/speaking/', '/stats/', '/contact/'];
+  const today = new Date().toISOString().slice(0, 10);
   const urls = [
     ...routePaths.map((p) => {
       const h = hints[p] || { changefreq: 'monthly', priority: '0.8' };
-      return `<url><loc>${escapeXml(`${siteUrl}${p}`)}</loc><changefreq>${h.changefreq}</changefreq><priority>${h.priority}</priority></url>`;
+      return `<url><loc>${escapeXml(`${siteUrl}${p}`)}</loc><lastmod>${today}</lastmod><changefreq>${h.changefreq}</changefreq><priority>${h.priority}</priority></url>`;
     }),
     ...localPosts.map(
       (post) =>
-        `<url><loc>${escapeXml(`${siteUrl}${post.url}`)}</loc><lastmod>${escapeXml(post.date)}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`,
+        `<url><loc>${escapeXml(`${siteUrl}${post.url}`)}</loc><lastmod>${escapeXml(post.date)}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`,
     ),
   ];
 
@@ -2736,6 +2909,166 @@ function buildSitemapXml(site, localPosts) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${urls.join('\n  ')}
 </urlset>\n`;
+}
+
+function buildRobotsTxt(siteUrl) {
+  return `# Universal Search Engine & AI Crawler Policy
+# Designed for maximum visibility in traditional search and AI answer engines
+
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /api/internal/
+
+# AI Search & Retrieval Crawlers (SearchGPT, Perplexity, Claude, Gemini, Copilot)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# Sitemap and LLM Metadata
+Sitemap: ${siteUrl}/sitemap.xml
+`;
+}
+
+function buildLlmsTxt(site, allBlogItems, projects) {
+  const siteUrl = String(site.siteUrl || 'https://itsthemaverick.github.io').replace(/\/$/, '');
+
+  return `# ${site.name} | AI & ML Engineer
+
+> Machine learning engineer and B.Tech researcher specializing in neural architectures from scratch in C, agentic AI workflows, and AI red teaming.
+
+${site.name} is an AI & Machine Learning Engineer focused on Neural Architectures, AI Red Teaming & Security, and Agentic AI Workflows. This document provides a machine-readable directory for Large Language Models and AI search agents to understand and navigate the site's primary resources and research.
+
+## Core Entities & Identity
+- Name: ${site.name}
+- Role/Focus: ${site.role}
+- Canonical URL: ${siteUrl}
+- Key Topics: Artificial Intelligence, Neural Networks in C, AI Red Teaming, Prompt Injection Defense, Agentic Workflows, Machine Learning
+- Affiliation: SprougHub Foundation (Project Lead / SDE & ML Intern), DevKraft (Research Intern), Dr. D. Y. Patil Institute of Technology
+- Contact & Verification: ${site.email} | https://github.com/itsthemaverick | https://www.linkedin.com/in/yashraj-bhogade
+
+## Essential Pages
+- [/about/](${siteUrl}/about/): Background, credentials, professional timeline, and engineering philosophy.
+- [/resume/](${siteUrl}/resume/): Formal experience, technical competencies, patent application, and education.
+- [/projects/](${siteUrl}/projects/): Production software, open-source repositories, benchmarks, and architectures.
+- [/writing/](${siteUrl}/writing/): Deep-dive technical articles, tutorials, and security write-ups.
+- [/speaking/](${siteUrl}/speaking/): Hackathon achievements, project pitches, and technical presentations.
+- [/contact/](${siteUrl}/contact/): Direct contact details and secure communications.
+
+## Featured Technical Articles & Research
+- [Building a Neural Network from Scratch in C](${siteUrl}/writing/building-a-neural-network-from-scratch-in-c/): Low-level implementation of multi-layer perceptron neural networks in ANSI C with zero external ML libraries, achieving 0.12ms single-sample latency and 7.8x speedup over CPU Python.
+- [AI Red Teaming: Turning Adversarial Chaos into a Repeatable Playbook](${siteUrl}/writing/ai-red-teaming-systematic-adversarial-testing/): Systematic multi-turn adversarial testing, Crescendo escalation attacks, and automated evaluation regression gates reducing attack success rates from 92.3% to 2.4%.
+- [Prompt Injection: Inside the Broken Trust Boundary](${siteUrl}/writing/prompt-injection-breaking-the-trust-boundary/): Architectural analysis of why control and data planes collapse in transformer attention layers, direct vs. indirect RAG poisoning, and structural taint tracking defenses.
+- [Why I Chose Parrot OS Over Omarchy for Security & Systems Work](${siteUrl}/writing/why-i-chose-parrot-os-over-omarchy/): Comparative evaluation of Parrot Security OS vs Omarchy across kernel isolation, AppArmor/Firejail sandboxing, and adversarial binary analysis.
+- [Patent: Proof-Based Task Validation in Collaborative Environments](https://dypvp.edu.in): Co-inventor of patent application for proof-based task validation and adaptive contribution mechanisms with Prof. Prajakta P. Pawar.
+
+## Key Open-Source Projects & Software
+- [Neural Network from Scratch in C](https://github.com/itsthemaverick/neural-network-in-c): Pure ANSI C feedforward neural network with manual forward propagation, backpropagation, and cache-optimized contiguous memory layouts.
+- [Deepreach (DevKraft)](https://devkraft.in): Agentic AI workflow system with structured guardrails and prompt engineering for autonomous company discovery and research.
+- [Project JHEP (SprougHub Foundation)](https://github.com/itsthemaverick): AI-powered Learning Management System developed by a 10-member engineering team led by Yashraj Bhogade.
+- [Credit Card Fraud Detection](https://github.com/itsthemaverick/fraud-detection): Comparative anomaly detection benchmarking Random Forest vs. Isolation Forest models with precision/recall tradeoffs.
+- [Malware Detection](https://github.com/itsthemaverick/malware-detection): Natural language processing pipeline classifying malicious code patterns using TF-IDF feature extraction and Logistic Regression.
+- [Signal-to-Strategy](https://github.com/itsthemaverick/signal-to-strategy): Supervised predictive modeling pipeline forecasting user behavior patterns to drive automated strategic interventions.
+
+## Full Context Archive
+- An exhaustive, unabridged text compilation of all articles, project documentation, and technical notes is available at ${siteUrl}/llms-full.txt
+`;
+}
+
+function buildLlmsFullTxt(site, resume, aboutDoc, allBlogItems, localPosts, projects, speaking) {
+  const siteUrl = String(site.siteUrl || 'https://itsthemaverick.github.io').replace(/\/$/, '');
+  const lines = [];
+
+  lines.push(`# ${site.name} — Full Technical Knowledge Base & LLM Context Archive\n`);
+  lines.push(`> Canonical URL: ${siteUrl}`);
+  lines.push(`> Role: ${site.role}`);
+  lines.push(`> Description: ${site.siteDescription}`);
+  lines.push(`> Current City: ${site.currentCity}`);
+  lines.push(`> Contact Email: ${site.email}`);
+  lines.push(`> Source Repository: https://github.com/${site.sourceRepository || 'itsthemaverick/personal-site'}\n`);
+
+  lines.push(`## 1. Biography & Professional Summary\n`);
+  lines.push(site.heroSummary);
+  lines.push(`\n${aboutDoc.body.trim().replace(/^# Intro\s*/, '')}\n`);
+
+  lines.push(`## 2. Technical Resume & Experience\n`);
+  lines.push(`### Summary`);
+  lines.push(resume.summary);
+  lines.push(`\n### Professional Work Experience`);
+  for (const job of resume.work || []) {
+    lines.push(`- **${job.position}** at [${job.name}](${job.url}) (${job.startDate} to ${job.endDate || 'Present'})`);
+    if (job.summary) lines.push(`  - Summary: ${job.summary}`);
+    for (const h of job.highlights || []) {
+      lines.push(`  - Highlight: ${h}`);
+    }
+  }
+
+  lines.push(`\n### Education & Degrees`);
+  for (const deg of resume.degrees || []) {
+    lines.push(`- **${deg.degree}** in ${deg.field} — [${deg.school}](${deg.link}) (${deg.startDate} - ${deg.endDate || 'Present'})`);
+  }
+
+  lines.push(`\n### Technical Skills & Competencies`);
+  for (const skill of resume.skills || []) {
+    lines.push(`- **${skill.title}**: ${skill.competencies ? skill.competencies.join(', ') : ''}`);
+  }
+
+  lines.push(`\n### Selected University Coursework`);
+  for (const course of resume.courses || []) {
+    lines.push(`- ${course.number}: ${course.title} (${course.university})`);
+  }
+
+  lines.push(`\n## 3. Curated Open-Source Projects & Software\n`);
+  for (const p of projects) {
+    lines.push(`### ${p.title} (${p.status || 'Active'})`);
+    if (p.subtitle) lines.push(`*Subtitle:* ${p.subtitle}`);
+    if (p.link) lines.push(`*Link:* ${p.link}`);
+    if (p.sourceRepository) lines.push(`*Code Repository:* ${p.sourceRepository}`);
+    if (p.tech) lines.push(`*Technologies:* ${p.tech.join(', ')}`);
+    if (p.body) lines.push(`\n${p.body.trim()}\n`);
+  }
+
+  lines.push(`\n## 4. Speaking, Competitions & Hackathons\n`);
+  for (const s of speaking.appearances || []) {
+    lines.push(`- **${s.title}** (${s.format}, ${s.date}, ${s.place}): ${s.desc}`);
+    if (s.link) lines.push(`  Link: ${s.link}`);
+  }
+
+  lines.push(`\n## 5. Unabridged Technical Articles & Publications\n`);
+  for (const post of localPosts) {
+    lines.push(`---\n`);
+    lines.push(`### Article: ${post.title}`);
+    lines.push(`- **Canonical URL:** ${siteUrl}/writing/${post.slug}/`);
+    lines.push(`- **Publication Date:** ${post.date}`);
+    lines.push(`- **Description:** ${post.description}\n`);
+    lines.push(post.content.trim());
+    lines.push(`\n`);
+  }
+
+  return lines.join('\n');
 }
 
 /* ==========================================================================
@@ -2854,12 +3187,14 @@ async function main() {
   writeOut('contact/index.html', renderDocument({ ...common, ...buildContactPage(site, contact) }));
   writeOut('404.html', renderDocument({ ...common, ...buildNotFoundPage() }));
 
-  // 5. Feeds, JSON Resume, Sitemap, Robots
+  // 5. Feeds, JSON Resume, Sitemap, Robots, LLM discovery
   writeOut('feed.xml', buildFeedXml(site, allBlogItems));
   writeOut('resume.json', buildResumeJson(site, resume));
   writeOut('sitemap.xml', buildSitemapXml(site, localPosts));
   const siteUrl = String(site.siteUrl || 'https://itsthemaverick.github.io').replace(/\/$/, '');
-  writeOut('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
+  writeOut('robots.txt', buildRobotsTxt(siteUrl));
+  writeOut('llms.txt', buildLlmsTxt(site, allBlogItems, projects));
+  writeOut('llms-full.txt', buildLlmsFullTxt(site, resume, aboutDoc, allBlogItems, localPosts, projects, speaking));
 
   const elapsed = Date.now() - started;
   console.log(

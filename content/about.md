@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "Learn about Yashraj Bhogade - AI & Machine Learning Engineer at ICAAI and builder across AI, security, and infrastructure."
+description: "Learn about Yashraj Bhogade, AI & Machine Learning Engineer, researcher at SprougHub and DevKraft, and co-inventor of proof-based task validation."
 sectionVariants:
   "Some history": "about-section--log"
   "Travel / geography": "about-section--log"

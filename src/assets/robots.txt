@@ -1,4 +1,38 @@
+# Universal Search Engine & AI Crawler Policy
+# Designed for maximum visibility in traditional search and AI answer engines
+
 User-agent: *
 Allow: /
+Disallow: /private/
+Disallow: /api/internal/
 
-Sitemap: https://itsthemaverick.github.io/sitemap.xml
+# AI Search & Retrieval Crawlers (SearchGPT, Perplexity, Claude, Gemini, Copilot)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# Sitemap and LLM Metadata
+Sitemap: https://maverick.is-cool.dev/sitemap.xml
