@@ -2404,6 +2404,16 @@ const ARTICLE_SEO_MAP = {
       { '@type': 'Thing', name: 'AppArmor', sameAs: 'https://en.wikipedia.org/wiki/AppArmor' },
     ],
   },
+  'building-localdrop-my-first-shipped-software': {
+    shortTitle: 'Building LocalDrop: First Shipped Software',
+    section: 'Software Engineering & Networking',
+    keywords: ['LocalDrop', 'PyQt5', 'Flask', 'Local Network File Transfer', 'Software Development Lifecycle', 'PyInstaller', 'Inno Setup', 'Network Diagnostics'],
+    about: [
+      { '@type': 'Thing', name: 'Software development process', sameAs: 'https://en.wikipedia.org/wiki/Software_development_process' },
+      { '@type': 'Thing', name: 'Flask (web framework)', sameAs: 'https://en.wikipedia.org/wiki/Flask_(web_framework)' },
+      { '@type': 'Thing', name: 'PyQt', sameAs: 'https://en.wikipedia.org/wiki/PyQt' },
+    ],
+  },
 };
 
 function buildBlogPostPage(site, post, localPosts, idx) {

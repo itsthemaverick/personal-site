@@ -81,6 +81,7 @@ const htmlFiles = [
   'writing/ai-red-teaming-systematic-adversarial-testing/index.html',
   'writing/prompt-injection-breaking-the-trust-boundary/index.html',
   'writing/why-i-chose-parrot-os-over-omarchy/index.html',
+  'writing/building-localdrop-my-first-shipped-software/index.html',
 ];
 
 for (const rel of htmlFiles) {
